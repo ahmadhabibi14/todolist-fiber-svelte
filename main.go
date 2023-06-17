@@ -2,19 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 )
-
-func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Println("Error load env : ", err.Error())
-		os.Exit(0)
-	}
-}
 
 type User struct {
 	Username string `json:"username"`
