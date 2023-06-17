@@ -9,6 +9,7 @@
 
 {#await promise}
 	<!-- optionally show something while promise is pending -->
+   <div>Loading....</div>
 {:then data}
 	<!-- promise was fulfilled -->
 	<div>
@@ -16,4 +17,5 @@
    </div>
 {:catch error}
 	<!-- optionally show something while promise was rejected -->
+   <div>Error</div>
 {/await}

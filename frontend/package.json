@@ -5,7 +5,7 @@
     "start": "npm run dev",
     "tailwind:watch": "npx tailwindcss -i ./css/main.css -o ./css/main.tmp.css --watch",
     "watch": "npm run build -- --watch",
-    "dev": "node build.js --watch --serve",
+    "dev": "concurrently 'pnpm run tailwind:watch' 'node build.js --watch --serve'",
     "build": "node build.js",
     "build:prod": "node build.js --minify",
     "serve": "node build.js --serve"
@@ -13,6 +13,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "chokidar": "^3.5.3",
+    "concurrently": "^8.2.0",
     "esbuild": "^0.16.17",
     "esbuild-svelte": "^0.7.3",
     "five-server": "^0.1.9",
