@@ -13,8 +13,9 @@ var userP = User{
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	app.Get("/api/data", func(c *fiber.Ctx) error {
 		c.Accepts("application/json")
+		c.Set("Access-Control-Allow-Origin", "*")
 		return c.JSON(userP)
 	})
 
