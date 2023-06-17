@@ -1,6 +1,20 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
+)
+
+func init() {
+	if err := godotenv.Load(); err != nil {
+		log.Println("Error load env : ", err.Error())
+		os.Exit(0)
+	}
+}
 
 type User struct {
 	Username string `json:"username"`
@@ -11,6 +25,7 @@ var userP = User{
 }
 
 func main() {
+	Port := os.Getenv("PORT")
 	app := fiber.New()
 
 	app.Get("/api/data", func(c *fiber.Ctx) error {
@@ -19,5 +34,6 @@ func main() {
 		return c.JSON(userP)
 	})
 
-	app.Listen("0.0.0.0:3000")
+	url := fmt.Sprintf("0.0.0.0:%s", Port)
+	app.Listen(url)
 }
