@@ -1,4 +1,4 @@
-package main
+epackage main
 
 import "github.com/gofiber/fiber/v2"
 
@@ -19,5 +19,5 @@ func main() {
 		return c.JSON(userP)
 	})
 
-	app.Listen("0.0.0.0:$PORT")
+	app.Listen("0.0.0.0:3000")
 }
