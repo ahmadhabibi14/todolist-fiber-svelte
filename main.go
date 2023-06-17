@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -15,8 +16,8 @@ var userP = User{
 }
 
 func main() {
-	// port := os.Getenv("PORT")
-	port := "3000"
+	port := os.Getenv("PORT")
+	// port := "3000"
 	app := fiber.New()
 
 	app.Static("/", "./")
