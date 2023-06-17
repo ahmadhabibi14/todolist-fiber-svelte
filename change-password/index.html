@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To Do List App</title>
+	<link rel="stylesheet" href="/css/main.tmp.css">
+</head>
+<body>
+	<nav>
+		Navbar
+	</nav>
+	<!-- Content Goes Here -->
+	<main id="app"><div>content
+</div></main>
+	<footer>Footer</footer>
+
+<script>document.getElementById('app').innerHTML=''</script><!---->
+
+
+<style></style>
+<script>(()=>{function r(){}function F(t){return t()}function A(){return Object.create(null)}function _(t){t.forEach(F)}function p(t){return typeof t=="function"}function C(t,e){return t!=t?e==e:t!==e||t&&typeof t=="object"||typeof t=="function"}function T(t){return Object.keys(t).length===0}var N=!1;function z(){N=!0}function H(){N=!1}function j(t,e,n){t.insertBefore(e,n||null)}function w(t){t.parentNode&&t.parentNode.removeChild(t)}function L(t){return document.createElement(t)}function G(t){return Array.from(t.childNodes)}var v;function d(t){v=t}var u=[];var D=[],f=[],M=[],W=Promise.resolve(),b=!1;function X(){b||(b=!0,W.then(P))}function $(t){f.push(t)}var g=new Set,l=0;function P(){if(l!==0)return;let t=v;do{try{for(;l<u.length;){let e=u[l];l++,d(e),Y(e.$)}}catch(e){throw u.length=0,l=0,e}for(d(null),u.length=0,l=0;D.length;)D.pop()();for(let e=0;e<f.length;e+=1){let n=f[e];g.has(n)||(g.add(n),n())}f.length=0}while(u.length);for(;M.length;)M.pop()();b=!1,g.clear(),d(t)}function Y(t){if(t.fragment!==null){t.update(),_(t.before_update);let e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach($)}}function U(t){let e=[],n=[];f.forEach(i=>t.indexOf(i)===-1?e.push(i):n.push(i)),n.forEach(i=>i()),f=e}var V=new Set;function J(t,e){t&&t.i&&(V.delete(t),t.i(e))}var nt=typeof window<"u"?window:typeof globalThis<"u"?globalThis:global;var K=["allowfullscreen","allowpaymentrequest","async","autofocus","autoplay","checked","controls","default","defer","disabled","formnovalidate","hidden","inert","ismap","loop","multiple","muted","nomodule","novalidate","open","playsinline","readonly","required","reversed","selected"],it=new Set([...K]);function Q(t,e,n,i){let{fragment:s,after_update:y}=t.$;s&&s.m(e,n),i||$(()=>{let a=t.$.on_mount.map(F).filter(p);t.$.on_destroy?t.$.on_destroy.push(...a):_(a),t.$.on_mount=[]}),y.forEach($)}function R(t,e){let n=t.$;n.fragment!==null&&(U(n.after_update),_(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function Z(t,e){t.$.dirty[0]===-1&&(u.push(t),X(),t.$.dirty.fill(0)),t.$.dirty[e/31|0]|=1<<e%31}function q(t,e,n,i,s,y,a,B=[-1]){let h=v;d(t);let o=t.$={fragment:null,ctx:[],props:y,update:r,not_equal:s,bound:A(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(e.context||(h?h.$.context:[])),callbacks:A(),dirty:B,skip_bound:!1,root:e.target||h.$.root};a&&a(o.root);let E=!1;if(o.ctx=n?n(t,e.props||{},(c,k,...S)=>{let O=S.length?S[0]:k;return o.ctx&&s(o.ctx[c],o.ctx[c]=O)&&(!o.skip_bound&&o.bound[c]&&o.bound[c](O),E&&Z(t,c)),k}):[],o.update(),E=!0,_(o.before_update),o.fragment=i?i(o.ctx):!1,e.target){if(e.hydrate){z();let c=G(e.target);o.fragment&&o.fragment.l(c),c.forEach(w)}else o.fragment&&o.fragment.c();e.intro&&J(t.$.fragment),Q(t,e.target,e.anchor,e.customElement),H(),P()}d(h)}var tt;typeof HTMLElement=="function"&&(tt=class extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){let{on_mount:t}=this.$;this.$.on_disconnect=t.map(F).filter(p);for(let e in this.$.slotted)this.appendChild(this.$.slotted[e])}attributeChangedCallback(t,e,n){this[t]=n}disconnectedCallback(){_(this.$.on_disconnect)}$destroy(){R(this,1),this.$destroy=r}$on(t,e){if(!p(e))return r;let n=this.$.callbacks[t]||(this.$.callbacks[t]=[]);return n.push(e),()=>{let i=n.indexOf(e);i!==-1&&n.splice(i,1)}}$set(t){this.$set&&!T(t)&&(this.$.skip_bound=!0,this.$set(t),this.$.skip_bound=!1)}});var m=class{$destroy(){R(this,1),this.$destroy=r}$on(e,n){if(!p(n))return r;let i=this.$.callbacks[e]||(this.$.callbacks[e]=[]);return i.push(n),()=>{let s=i.indexOf(n);s!==-1&&i.splice(s,1)}}$set(e){this.$set&&!T(e)&&(this.$.skip_bound=!0,this.$set(e),this.$.skip_bound=!1)}};function et(t){let e;return{c(){e=L("div"),e.textContent="content"},m(n,i){j(n,e,i)},p:r,i:r,o:r,d(n){n&&w(e)}}}var x=class extends m{constructor(e){super(),q(this,e,null,et,C,{})}},I=x;var ut=new I({target:document.getElementById("app")});})();
+</script>
+</body></html>
