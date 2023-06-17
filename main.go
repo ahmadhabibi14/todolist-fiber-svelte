@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -16,8 +15,11 @@ var userP = User{
 }
 
 func main() {
-	Port := os.Getenv("PORT")
+	// port := os.Getenv("PORT")
+	port := "3000"
 	app := fiber.New()
+
+	app.Static("/", "./")
 
 	app.Get("/api/data", func(c *fiber.Ctx) error {
 		c.Accepts("application/json")
@@ -25,6 +27,6 @@ func main() {
 		return c.JSON(userP)
 	})
 
-	url := fmt.Sprintf("0.0.0.0:%s", Port)
+	url := fmt.Sprintf("0.0.0.0:%s", port)
 	app.Listen(url)
 }
