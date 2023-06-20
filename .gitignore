@@ -1,12 +1,10 @@
 .DS_Store
-frontend/node_modules
-frontend/build
-frontend/.svelte-kit
-frontend/package
+client/node_modules
+client/build
+client/.svelte-kit
+client/package
 .env
 .env.*
 !.env.example
 .vercel
 .output
-frontend/vite.config.js.timestamp-*
-frontendvite.config.ts.timestamp-*
