@@ -12,7 +12,8 @@ dimana terdapat 3 halaman:
    -  `delete todo`
    tiap baris todo ditampilkan username dan isi todo dan 2 tombol: edit apbila yang membuat todo adalah akun yang sedang login, apabila belum login, hanya bisa melihat
 
-tiap halaman memiliki link menuju kedua halaman tersebut, dan tulisan `(c) [username email anda] [tahun]`, misal: `(c) tejo 2022"` di bagian bawah halaman
+tiap halaman memiliki link menuju kedua halaman tersebut, dan tulisan  
+`(c) [username email anda] [tahun]`, misal: `(c) tejo 2022"` di bagian bawah halaman
 
 **`Penilaian`**:  
 Kesesuaian dengan spesifikasi, common state bug (refresh/force reload, clear cookie)
