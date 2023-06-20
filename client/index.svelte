@@ -1,21 +1,11 @@
 <script>
-	let promise = fetch(
-      'http://localhost:3000/api/data',
-      {
-         method: "GET"
-      }
-   ).then((x) => x.json());
+   import Navbar from "./_components/navbar.svelte";
+   import Footer from "./_components/footer.svelte";
 </script>
 
-{#await promise}
-	<!-- optionally show something while promise is pending -->
-   <div>Loading....</div>
-{:then data}
-	<!-- promise was fulfilled -->
-	<div>
-      <h1>Welcome {data.username}</h1>
-   </div>
-{:catch error}
-	<!-- optionally show something while promise was rejected -->
-   <div>Error</div>
-{/await}
+<Navbar></Navbar>
+<main class="min-h-[80vh] mx-44 mt-20">
+
+   <div>Halo</div>
+</main>
+<Footer></Footer>
