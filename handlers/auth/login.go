@@ -24,7 +24,7 @@ func Login(c *fiber.Ctx) error {
 		Name:     "session_id",
 		Value:    sessionToken,
 		Expires:  expiresAt,
-		HTTPOnly: true,
+		HTTPOnly: false,
 	}
 
 	for _, user := range models.UserStores {

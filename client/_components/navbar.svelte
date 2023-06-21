@@ -1,39 +1,17 @@
 <script>
 	import { onMount } from "svelte";
-   import { writable } from "svelte/store";
 
-   let isLoggedIn = writable(false);
+   let user = { loggedIn: false }
    onMount(() => {
-      getCookie("session_id");
-   });
-   function getCookie(cookie_name) {
       const cookies = document.cookie.split(";");
-      for (let i = 0; i < cookies.length; i++) {
-         const cookie = cookies[i].trim();
-         if (cookie.startsWith(cookie_name + "=")) {
-            const cookieValue = cookie.substring(cookie_name + 1);
-            const decodedCookieValue = decodeURIComponent(cookieValue);
-
-            const cookieParts = decodedCookieValue.split(";");
-            // const value = cookieParts[0].trim();
-            const expiration = cookieParts.find((part) => {
-               part.trim().startsWith("expires=");
-            });
-
-            if (isCookieNotExpired(expiration)) {
-               isLoggedIn.set(true)
-            } else {
-               isLoggedIn.set(false)
-            }
+      cookies.forEach(cookie => {
+         const [name, value] = cookie.trim().split("=");
+         if (name === "session_id") {
+            console.log("session_id:", value)
+            user.loggedIn = true;
          }
-      }
-   }
-
-   function isCookieNotExpired(expiration) {
-      const expirationDate = new Date(expiration.substring(8).trim());
-      return expirationDate > new Date();
-   }
-
+      })
+   });
 </script>
 
 <!-- NavBar -->
@@ -44,7 +22,7 @@
 
    <div class="flex flex-row space-x-3">
       <a href="/" class="py-1.5 px-3 rounded-xl hover:bg-gray-200 font-medium">Home</a>
-      {#if !isLoggedIn}
+      {#if !user.loggedIn}
          <a href="/login" class="py-1.5 px-3 rounded-xl hover:bg-gray-200 font-medium">Login</a>
       {/if}
    </div>
