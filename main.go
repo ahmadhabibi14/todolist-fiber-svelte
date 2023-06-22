@@ -2,6 +2,7 @@ package main
 
 import (
 	"ahmadhabibi7159_ToDoList/handlers/auth"
+	"ahmadhabibi7159_ToDoList/handlers/todo"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -14,6 +15,7 @@ func main() {
 	app.Static("/", "./client")
 	api := app.Group("/api") // All Backend services in /api endpoints
 	api.Post("/login", auth.Login)
+	api.Get("/todo/list", todo.Lists)
 
 	app.Listen("0.0.0.0:" + port)
 }
