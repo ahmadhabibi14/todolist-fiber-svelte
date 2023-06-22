@@ -35,13 +35,15 @@ func Login(c *fiber.Ctx) error {
 			}
 			c.Cookie(&cookie)
 			return c.Status(fiber.StatusOK).JSON(fiber.Map{
-				"message": "Login Successful !!",
+				"user_id":  user.Id,
+				"username": creds.Username,
 			})
 		}
 	}
 	userModel.NewUser(*creds)
 	c.Cookie(&cookie)
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "Login Successful !!",
+		"user_id":  models.IdAutoInc - 1,
+		"username": creds.Username,
 	})
 }

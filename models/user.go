@@ -13,15 +13,15 @@ type Credentials struct {
 }
 
 var UserStores = []User{}
-var idAutoInc = uint64(1)
+var IdAutoInc = uint64(1)
 
 func (u *User) NewUser(data Credentials) {
 	newUser := User{
-		Id:       idAutoInc,
+		Id:       IdAutoInc,
 		Username: data.Username,
 		Password: data.Password,
 		LoggedIn: true,
 	}
 	UserStores = append(UserStores, newUser)
-	idAutoInc++
+	IdAutoInc++
 }

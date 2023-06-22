@@ -40,7 +40,10 @@
          });
          
          if (resp.ok) {
+            const creds = await resp.json();
             const cookieHeader = resp.headers.get("Set-Cookie");
+            console.log(creds)
+            localStorage.setItem("username", creds.username);
             document.cookie = cookieHeader;
          } else {
             const errorData = await resp.json();
@@ -58,7 +61,7 @@
 </script>
 
 <Navbar></Navbar>
-<main class="min-h-[80vh] mx-44 mt-20">
+<main class="min-h-[78vh] mx-44 mt-20">
    <div class="w-full h-fit flex flex-col items-center justify-center pt-16">
       {#if !user.loggedIn}
       <form
