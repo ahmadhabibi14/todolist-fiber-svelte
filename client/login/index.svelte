@@ -45,6 +45,7 @@
             console.log(creds)
             localStorage.setItem("username", creds.username);
             document.cookie = cookieHeader;
+            window.location.href = "/";
          } else {
             const errorData = await resp.json();
             errorMessage.set(errorData.message || "Login Failed");
