@@ -29,6 +29,13 @@ func Login(c *fiber.Ctx) error {
 
 	for _, user := range models.UserStores {
 		if user.Username == creds.Username && user.Password == creds.Password {
+			// Delete previous session
+			for key, value := range models.Sessions {
+				if value.Username == creds.Username {
+					delete(models.Sessions, key)
+				}
+			}
+			// create a new session
 			models.Sessions[sessionToken] = models.Session{
 				Username: user.Username,
 				Expiry:   expiresAt,
@@ -41,6 +48,11 @@ func Login(c *fiber.Ctx) error {
 		}
 	}
 	userModel.NewUser(*creds)
+	// create a new session
+	models.Sessions[sessionToken] = models.Session{
+		Username: creds.Username,
+		Expiry:   expiresAt,
+	}
 	c.Cookie(&cookie)
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"user_id":  models.IdAutoInc - 1,

@@ -11,9 +11,15 @@ type Todo struct {
 
 var Todos = []Todo{
 	{
-		Text:       "Test 124",
+		Text:       "Mau main bola",
 		Created_At: time.Now().UTC(),
 		Updated_At: time.Now().UTC(),
 		Username:   "habi",
+	},
+	{
+		Text:       "Rasa yang dulu pernah ada",
+		Created_At: time.Date(2011, 2, 24, 10, 20, 0, 0, time.UTC),
+		Updated_At: time.Date(2023, 2, 24, 10, 20, 0, 0, time.UTC),
+		Username:   "hana",
 	},
 }
