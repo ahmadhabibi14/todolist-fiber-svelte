@@ -13,7 +13,7 @@ type text_store struct {
 }
 
 func Add(c *fiber.Ctx) error {
-	session_id := c.Cookies("session_id")
+	session_id := c.Get("X-Session-ID")
 	textStore := new(text_store)
 
 	if err := c.BodyParser(textStore); err != nil {

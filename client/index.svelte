@@ -2,11 +2,21 @@
    import { onMount } from "svelte";
    import Navbar from "./_components/navbar.svelte";
    import Footer from "./_components/footer.svelte";
+   import AddItem from "./_components/add_item.svelte";
+   
+   let isModalOpen = false;
+   function openModal() {
+      isModalOpen = true;
+   }
+   function closeModal() {
+      isModalOpen = false;
+   }
 
    let Todos = [];
    let user = {
       username: "",
-      loggedIn: false
+      loggedIn: false,
+      session_id: ""
    }
    async function getTodos() {
       const resp = await fetch("/api/todo/list", { method: "GET" });
@@ -21,6 +31,7 @@
          const [name, value] = cookie.trim().split("=");
          if (name === "session_id") {
             console.log("session_id:", value)
+            user.session_id = value;
             user.loggedIn = true;
          }
       });
@@ -42,11 +53,16 @@
 
 <Navbar></Navbar>
 <main class="min-h-[80vh] mx-44 mt-24">
+   <AddItem
+      isOpen={isModalOpen}
+      session_id={user.session_id}
+      on:close={closeModal}
+   />
 
    {#if Todos.length > 0}
       <div class="flex flex-col w-9/12 space-y-3 justify-center mx-auto">
          {#if user.loggedIn}
-            <button class="py-2 mx-auto px-auto rounded-xl text-lg text-zinc-50 font-semibold bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600 w-full">New Todo +</button>
+            <button on:click={openModal} class="py-2 mx-auto px-auto rounded-xl text-lg text-zinc-50 font-semibold bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600 w-full">New Todo +</button>
          {/if}
          {#each Todos as todo}
             <div class="flex flex-row justify-between items-start space-x-3 rounded-xl shadow-md py-3 px-5 border border-zinc-300">

@@ -17,7 +17,7 @@ func main() {
 	api := app.Group("/api") // All Backend services in /api endpoints
 	api.Post("/login", auth.Login)
 	api.Get("/todo/list", todo.Lists)
-	api.Post("/todo/add", middlewares.CookieSession, todo.Add)
+	api.Post("/todo/add", middlewares.CookieSession, middlewares.CORS, todo.Add)
 
 	app.Listen("0.0.0.0:" + port)
 }
