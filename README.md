@@ -4,7 +4,7 @@ Buatlah aplikasi frontend Svelte sederhana menggunakan svelte-mpa https://github
 dimana terdapat 3 halaman:
 
 -  `Register/Login` (username, password)  
-   apabila belum login, ganti password dan logout apabila sudah login
+   apabila belum login tamppilkan menu Register/Login, jika sudah maka tampilkan menu Ganti Password dan Logout
 -  `List Todos`  
    dengan 3 action:  
    -  `add todo`

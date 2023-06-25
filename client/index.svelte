@@ -14,7 +14,7 @@
 
    let Todos = [];
    let user = {
-      username: "",
+      user_id: "",
       loggedIn: false,
       session_id: ""
    }
@@ -30,12 +30,12 @@
       cookies.forEach(cookie => {
          const [name, value] = cookie.trim().split("=");
          if (name === "session_id") {
-            console.log("session_id:", value)
             user.session_id = value;
             user.loggedIn = true;
          }
       });
-      user.username = localStorage.getItem("username");
+      user.user_id = localStorage.getItem("user_id");
+      console.log(user.user_id)
    })
 
    function formatTime(timestamp) {
@@ -103,7 +103,7 @@
                   </div>
                </div>
 
-               {#if todo.username === user.username}
+               {#if todo.user_id == user.user_id}
                   <div class="flex flex-row space-x-2 w-fit text-zinc-50 text-sm">
                      <button class="py-1 px-3 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg flex flex-row space-x-2 items-center">
                         <svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current">

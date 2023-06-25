@@ -25,16 +25,15 @@
          });
          if (resp.ok) {
             const msg = await resp.json();
-            console.error(msg.message);
             alert(msg.message);
             dispatch("close");
             location.reload();
          }
       } catch (error) {
          console.error(error);
-         alert(msg.message);
+         alert("Add item failed");
       }
-      data.text = "";
+      data.text = ""; // reset
    }
 </script>
 

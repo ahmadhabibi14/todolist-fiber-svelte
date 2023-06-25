@@ -39,7 +39,9 @@ func Login(c *fiber.Ctx) error {
 			models.Sessions[sessionToken] = models.Session{
 				Username: user.Username,
 				Expiry:   expiresAt,
+				UserId:   int(user.Id),
 			}
+			user.LoggedIn = true
 			c.Cookie(&cookie)
 			return c.Status(fiber.StatusOK).JSON(fiber.Map{
 				"user_id":  user.Id,
@@ -52,6 +54,7 @@ func Login(c *fiber.Ctx) error {
 	models.Sessions[sessionToken] = models.Session{
 		Username: creds.Username,
 		Expiry:   expiresAt,
+		UserId:   int(models.IdAutoInc - 1),
 	}
 	c.Cookie(&cookie)
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{

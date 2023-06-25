@@ -14,6 +14,7 @@ type Credentials struct {
 
 var UserStores = []User{}
 var IdAutoInc = uint64(1)
+var TotalLoggedIn = uint64(0)
 
 func (u *User) NewUser(data Credentials) {
 	newUser := User{
@@ -23,5 +24,6 @@ func (u *User) NewUser(data Credentials) {
 		LoggedIn: true,
 	}
 	UserStores = append(UserStores, newUser)
+	TotalLoggedIn += 1
 	IdAutoInc++
 }

@@ -1,5 +1,4 @@
 <script>
-   import { writable } from "svelte/store";
    import { onMount } from "svelte";
    import Navbar from "../_components/navbar.svelte";
    import Footer from "../_components/footer.svelte";
@@ -16,10 +15,6 @@
          }
       })
    });
-
-   // Create writable store for the loading state
-   let isError = writable(false);
-   let errorMessage = writable("");
 
    let data = {
       username: "",
@@ -43,18 +38,19 @@
             const creds = await resp.json();
             const cookieHeader = resp.headers.get("Set-Cookie");
             console.log(creds)
-            localStorage.setItem("username", creds.username);
+            localStorage.setItem("user_id", creds.user_id);
             document.cookie = cookieHeader;
             window.location.href = "/";
          } else {
             const errorData = await resp.json();
-            errorMessage.set(errorData.message || "Login Failed");
+            alert("Login failed");
+            location.reload();
          }
       } catch (error) {
          // Handle any network or server errors
          console.error(error);
-         isError.set(true)
-         errorMessage.set("Unexpected error occurred during login")
+         alert("Unexpected error occurred during login");
+         location.reload();
       }
       data.username = ""
       data.password = ""

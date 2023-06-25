@@ -26,6 +26,7 @@ func Add(c *fiber.Ctx) error {
 		Created_At: time.Now().UTC(),
 		Updated_At: time.Now().UTC(),
 		Username:   models.Sessions[session_id].Username,
+		UserId:     models.Sessions[session_id].UserId,
 	}
 	models.Todos = append(models.Todos, todoData)
 

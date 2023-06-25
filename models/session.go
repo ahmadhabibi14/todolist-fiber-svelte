@@ -8,6 +8,7 @@ var Sessions = map[string]Session{}
 // Each Session contains the username of the user and the time at which it expires
 type Session struct {
 	Username string
+	UserId   int
 	Expiry   time.Time
 }
 
