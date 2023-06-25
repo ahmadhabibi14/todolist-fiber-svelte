@@ -9,6 +9,10 @@
       text: "",
    }
 
+   function closeModal() {
+      dispatch("close")
+   }
+
    const submitText = async (e) => {
       const reqBody = JSON.stringify({
          text: data.text
@@ -40,7 +44,7 @@
 {#if isOpen}
 <div class="w-full h-[96%] overflow-y-hidden top-0 left-0 absolute bg-zinc-800 bg-opacity-70 backdrop-blur-md flex justify-center">
    <form action="/api/todo/add" on:submit|preventDefault={submitText}
-      class="mt-24 w-6/12 h-fit p-4 bg-white rounded-xl border-zinc-300 shadow-lg flex flex-col space-y-3"
+      class="mt-24 w-6/12 h-fit p-5 bg-white rounded-xl border-zinc-300 shadow-lg flex flex-col space-y-3"
    >
       <textarea
          rows="6"
@@ -48,13 +52,18 @@
          type="text"
          id="text"
          name="text"
-         placeholder="Text"
+         placeholder="Tulis teks disini ..... 😁"
          bind:value={data.text}
          required
       ></textarea>
-      <button type="submit" class="py-1.5 px-3 bg-sky-600 rounded-lg font-medium text-zinc-50 hover:bg-sky-500">
-         Submit
-      </button>
+      <div class="flex flex-row space-x-3 w-full h-fit">
+         <button on:click|preventDefault={closeModal} class="basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600">
+            Cancel
+         </button>
+         <button type="submit" class="basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600">
+            Submit
+         </button>
+      </div>
    </form>
 </div>
 {/if}

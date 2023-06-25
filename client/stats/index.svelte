@@ -30,7 +30,7 @@
       <div class="flex flex-col w-9/12 space-y-3 justify-center mx-auto">
          <div class="py-3 px-auto mx-auto border border-sky-600 rounded-xl w-full h-fit">
             <h1 class="bg-gradient-to-br from-sky-500 to-fuchsia-500 text-transparent bg-clip-text text-4xl font-bold text-center">
-               Change Password
+               Stats
             </h1>
          </div>
          <div class="w-full h-fit flex flex-row justify-between">

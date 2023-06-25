@@ -10,6 +10,7 @@ type stats struct {
 	LoggedIn       int `json:"logged_in"`
 	UserRegistered int `json:"user_registered"`
 	TodoCreated    int `json:"todo_created"`
+	TodoDeleted    int `json:"todo_deleted"`
 }
 
 func Stats(c *fiber.Ctx) error {
@@ -17,6 +18,7 @@ func Stats(c *fiber.Ctx) error {
 		LoggedIn:       int(models.TotalLoggedIn),
 		UserRegistered: len(models.UserStores),
 		TodoCreated:    len(models.Todos),
+		TodoDeleted:    18,
 	}
 
 	return c.Status(fiber.StatusOK).JSON(statsData)
