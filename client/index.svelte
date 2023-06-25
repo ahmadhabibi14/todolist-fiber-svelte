@@ -14,7 +14,7 @@
 
    let Todos = [];
    let user = {
-      user_id: "",
+      user_id: 0,
       loggedIn: false,
       session_id: ""
    }
@@ -103,7 +103,7 @@
                   </div>
                </div>
 
-               {#if todo.user_id == user.user_id}
+               {#if todo.user_id === user.user_id}
                   <div class="flex flex-row space-x-2 w-fit text-zinc-50 text-sm">
                      <button class="py-1 px-3 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg flex flex-row space-x-2 items-center">
                         <svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current">
