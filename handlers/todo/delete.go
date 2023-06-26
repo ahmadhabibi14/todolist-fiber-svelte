@@ -17,7 +17,8 @@ func Delete(c *fiber.Ctx) error {
 
 	for i := range models.Todos {
 		if models.Todos[i].UserId == user_id && models.Todos[i].Id == deleteTodoStore.Id {
-			models.Todos = models.DeleteTodo(models.Todos, i)
+			newArr := models.DeleteTodo(models.Todos, i)
+			models.Todos = newArr
 			models.TotalTodoDeleted++
 		}
 	}

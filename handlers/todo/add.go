@@ -28,6 +28,7 @@ func Add(c *fiber.Ctx) error {
 		UserId:     models.Sessions[session_id].UserId,
 	}
 	models.Todos = append(models.Todos, todoData)
+	models.TotalTodoCreated++
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Add item success",

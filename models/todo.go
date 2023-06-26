@@ -28,6 +28,7 @@ type DeleteTodoStore struct {
 
 var Todos = []Todo{}
 var TotalTodoDeleted int = 0
+var TotalTodoCreated int = 0
 
 type ByUpdatedAt []Todo
 

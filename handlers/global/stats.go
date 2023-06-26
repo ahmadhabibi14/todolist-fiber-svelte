@@ -17,7 +17,7 @@ func Stats(c *fiber.Ctx) error {
 	statsData := stats{
 		LoggedIn:       int(models.TotalLoggedIn),
 		UserRegistered: len(models.UserStores),
-		TodoCreated:    len(models.Todos),
+		TodoCreated:    models.TotalTodoCreated,
 		TodoDeleted:    models.TotalTodoDeleted,
 	}
 
