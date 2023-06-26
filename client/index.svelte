@@ -32,8 +32,35 @@
       todo_id: "",
    }
    async function getTodos() {
-      const resp = await fetch("/api/todo/list", { method: "GET" });
+      const resp = await fetch("/api/todo/list?page=1&limit=10", { method: "GET" });
       Todos = await resp.json();
+   }
+
+   async function deleteTodos(tdoId) {
+      user.todo_id = tdoId;
+      const reqBody = JSON.stringify({
+         id: user.todo_id
+      })
+      try {
+         const resp = await fetch("/api/todo/delete", {
+            method: "DELETE",
+            headers: {
+               "X-Session-ID": user.session_id,
+               "Content-Type": "application/json"
+            },
+            body: reqBody
+         });
+         if (resp.ok) {
+            const msg = await resp.json();
+            console.log(msg.message);
+            user.todo_id = "";
+            location.reload();
+         }
+      } catch (error) {
+         console.error(error);
+         alert("Error delete item")
+      }
+      
    }
 
    onMount(() => {
@@ -133,7 +160,7 @@
                            </svg>                                                        
                            <span>Edit</span>
                         </button>
-                        <button class="py-1 px-3 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 rounded-lg flex flex-row space-x-2 items-center">
+                        <button on:click={deleteTodos(todo.id)} class="py-1 px-3 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 rounded-lg flex flex-row space-x-2 items-center">
                            <svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current">
                               <path d="M20.9997 6.72998C20.9797 6.72998 20.9497 6.72998 20.9197 6.72998C15.6297 6.19998 10.3497 5.99998 5.11967 6.52998L3.07967 6.72998C2.65967 6.76998 2.28967 6.46998 2.24967 6.04998C2.20967 5.62998 2.50967 5.26998 2.91967 5.22998L4.95967 5.02998C10.2797 4.48998 15.6697 4.69998 21.0697 5.22998C21.4797 5.26998 21.7797 5.63998 21.7397 6.04998C21.7097 6.43998 21.3797 6.72998 20.9997 6.72998Z"/>
                               <path d="M8.50074 5.72C8.46074 5.72 8.42074 5.72 8.37074 5.71C7.97074 5.64 7.69074 5.25 7.76074 4.85L7.98074 3.54C8.14074 2.58 8.36074 1.25 10.6907 1.25H13.3107C15.6507 1.25 15.8707 2.63 16.0207 3.55L16.2407 4.85C16.3107 5.26 16.0307 5.65 15.6307 5.71C15.2207 5.78 14.8307 5.5 14.7707 5.1L14.5507 3.8C14.4107 2.93 14.3807 2.76 13.3207 2.76H10.7007C9.64074 2.76 9.62074 2.9 9.47074 3.79L9.24074 5.09C9.18074 5.46 8.86074 5.72 8.50074 5.72Z"/>

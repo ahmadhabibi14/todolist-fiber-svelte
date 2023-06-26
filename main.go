@@ -25,6 +25,7 @@ func main() {
 	api.Get("/todo/list", todo.Lists)
 	api.Post("/todo/add", middlewares.CookieSession, middlewares.CORS, todo.Add)
 	api.Put("/todo/overwrite", middlewares.CookieSession, middlewares.CORS, todo.Overwrite)
+	api.Delete("/todo/delete", middlewares.CookieSession, middlewares.CORS, todo.Delete)
 
 	// Global endpoints
 	api.Get("/stats", global.Stats)

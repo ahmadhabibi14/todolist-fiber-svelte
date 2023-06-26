@@ -35,5 +35,5 @@ curl -X GET -i localhost:3000/api/stats
 
 ### Get Todos
 ```sh
-curl -X GET -i localhost:3000/api/todo/list
+curl -X GET -i localhost:3000/api/todo/list?page=1&limit=10
 ```

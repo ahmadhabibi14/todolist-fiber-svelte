@@ -29,7 +29,7 @@
          });
          if (resp.ok) {
             const msg = await resp.json();
-            alert(msg.message);
+            console.log(msg.message);
             dispatch("close");
             location.reload();
          }
