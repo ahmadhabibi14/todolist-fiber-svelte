@@ -4,7 +4,7 @@ go 1.20
 
 require github.com/gofiber/fiber/v2 v2.46.0
 
-require github.com/rs/xid v1.5.0 // indirect
+require github.com/rs/xid v1.5.0
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
