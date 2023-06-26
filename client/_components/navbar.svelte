@@ -34,6 +34,11 @@
             localStorage.removeItem("username");
             alert(msg); // Get message from backend
             location.reload();
+         } else {
+            document.cookie = `${user.session_cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            user.loggedIn = false;
+            localStorage.removeItem("username");
+            location.reload();
          }
       } catch (error) {
          console.error(error);
