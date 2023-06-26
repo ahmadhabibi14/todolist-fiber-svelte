@@ -3,25 +3,37 @@
    import Navbar from "./_components/navbar.svelte";
    import Footer from "./_components/footer.svelte";
    import AddItem from "./_components/add_item.svelte";
+   import EditItem from "./_components/edit_item.svelte";
    
-   let isModalOpen = false;
-   function openModal() {
-      isModalOpen = true;
+   let isAddItemOpen = false;
+   let isEditItemOpen = false;
+
+   function openModalAddItem() {
+      isAddItemOpen = true;
    }
-   function closeModal() {
-      isModalOpen = false;
+   function closeModalAddItem() {
+      isAddItemOpen = false;
+   }
+   function openModalEditItem(curTxt, tdoId) {
+      user.current_text = curTxt;
+      user.todo_id = tdoId;
+      isEditItemOpen = true;
+   }
+   function closeModalEditItem() {
+      isEditItemOpen = false;
    }
 
    let Todos = [];
    let user = {
       user_id: 0,
       loggedIn: false,
-      session_id: ""
+      session_id: "",
+      current_text: "",
+      todo_id: "",
    }
    async function getTodos() {
       const resp = await fetch("/api/todo/list", { method: "GET" });
       Todos = await resp.json();
-      console.log(Todos);
    }
 
    onMount(() => {
@@ -35,7 +47,6 @@
          }
       });
       user.user_id = localStorage.getItem("user_id");
-      console.log(user.user_id)
    })
 
    function formatTime(timestamp) {
@@ -53,16 +64,24 @@
 
 <Navbar></Navbar>
 <main class="min-h-[80vh] mx-44 mt-24">
+   <!-- Tambah Item Todo -->
    <AddItem
-      isOpen={isModalOpen}
+      isOpen={isAddItemOpen}
       session_id={user.session_id}
-      on:close={closeModal}
+      on:close={closeModalAddItem}
+   />
+   <!-- Edit Item Todo -->
+   <EditItem
+      isOpen={isEditItemOpen}
+      session_id={user.session_id}
+      currentText={user.current_text}
+      todoId={user.todo_id}
+      on:close={closeModalEditItem}
    />
 
-   
       <div class="flex flex-col w-9/12 space-y-3 justify-center mx-auto">
          {#if user.loggedIn}
-            <button on:click={openModal} class="py-2 mx-auto px-auto rounded-xl text-lg text-zinc-50 font-semibold bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600 w-full">New Todo +</button>
+            <button on:click={openModalAddItem} class="py-2 mx-auto px-auto rounded-xl text-lg text-zinc-50 font-semibold bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600 w-full">New Todo +</button>
          {/if}
          {#if Todos.length > 0}
             {#each Todos as todo}
@@ -106,7 +125,7 @@
 
                   {#if todo.user_id == user.user_id}
                      <div class="flex flex-row space-x-2 w-fit text-zinc-50 text-sm">
-                        <button class="py-1 px-3 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg flex flex-row space-x-2 items-center">
+                        <button on:click={openModalEditItem(todo.text, todo.id)} class="py-1 px-3 bg-gradient-to-br from-yellow-400 to-amber-600 hover:from-yellow-500 hover:to-amber-600 rounded-lg flex flex-row space-x-2 items-center">
                            <svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current">
                               <path d="M5.53999 19.5201C4.92999 19.5201 4.35999 19.31 3.94999 18.92C3.42999 18.43 3.17999 17.69 3.26999 16.89L3.63999 13.65C3.70999 13.04 4.07999 12.23 4.50999 11.79L12.72 3.10005C14.77 0.930049 16.91 0.870049 19.08 2.92005C21.25 4.97005 21.31 7.11005 19.26 9.28005L11.05 17.97C10.63 18.42 9.84999 18.84 9.23999 18.9401L6.01999 19.49C5.84999 19.5 5.69999 19.5201 5.53999 19.5201ZM15.93 2.91005C15.16 2.91005 14.49 3.39005 13.81 4.11005L5.59999 12.8101C5.39999 13.0201 5.16999 13.5201 5.12999 13.8101L4.75999 17.05C4.71999 17.38 4.79999 17.65 4.97999 17.82C5.15999 17.99 5.42999 18.05 5.75999 18L8.97999 17.4501C9.26999 17.4001 9.74999 17.14 9.94999 16.93L18.16 8.24005C19.4 6.92005 19.85 5.70005 18.04 4.00005C17.24 3.23005 16.55 2.91005 15.93 2.91005Z"/>
                               <path d="M17.3404 10.9498C17.3204 10.9498 17.2904 10.9498 17.2704 10.9498C14.1504 10.6398 11.6404 8.26985 11.1604 5.16985C11.1004 4.75985 11.3804 4.37985 11.7904 4.30985C12.2004 4.24985 12.5804 4.52985 12.6504 4.93985C13.0304 7.35985 14.9904 9.21985 17.4304 9.45985C17.8404 9.49985 18.1404 9.86985 18.1004 10.2798C18.0504 10.6598 17.7204 10.9498 17.3404 10.9498Z"/>
@@ -114,7 +133,7 @@
                            </svg>                                                        
                            <span>Edit</span>
                         </button>
-                        <button class="py-1 px-3 bg-gradient-to-br from-rose-400 to-red-500 rounded-lg flex flex-row space-x-2 items-center">
+                        <button class="py-1 px-3 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 rounded-lg flex flex-row space-x-2 items-center">
                            <svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current">
                               <path d="M20.9997 6.72998C20.9797 6.72998 20.9497 6.72998 20.9197 6.72998C15.6297 6.19998 10.3497 5.99998 5.11967 6.52998L3.07967 6.72998C2.65967 6.76998 2.28967 6.46998 2.24967 6.04998C2.20967 5.62998 2.50967 5.26998 2.91967 5.22998L4.95967 5.02998C10.2797 4.48998 15.6697 4.69998 21.0697 5.22998C21.4797 5.26998 21.7797 5.63998 21.7397 6.04998C21.7097 6.43998 21.3797 6.72998 20.9997 6.72998Z"/>
                               <path d="M8.50074 5.72C8.46074 5.72 8.42074 5.72 8.37074 5.71C7.97074 5.64 7.69074 5.25 7.76074 4.85L7.98074 3.54C8.14074 2.58 8.36074 1.25 10.6907 1.25H13.3107C15.6507 1.25 15.8707 2.63 16.0207 3.55L16.2407 4.85C16.3107 5.26 16.0307 5.65 15.6307 5.71C15.2207 5.78 14.8307 5.5 14.7707 5.1L14.5507 3.8C14.4107 2.93 14.3807 2.76 13.3207 2.76H10.7007C9.64074 2.76 9.62074 2.9 9.47074 3.79L9.24074 5.09C9.18074 5.46 8.86074 5.72 8.50074 5.72Z"/>

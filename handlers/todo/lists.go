@@ -7,5 +7,6 @@ import (
 )
 
 func Lists(c *fiber.Ctx) error {
+
 	return c.Status(fiber.StatusOK).JSON(models.Todos)
 }

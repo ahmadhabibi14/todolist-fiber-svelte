@@ -20,6 +20,14 @@ curl -X POST
    >  --url localhost:3000/api/todo/add
 ```
 
+### Edit Todo
+```sh
+curl -X PUT
+   >  -d 'text=habibidoifiefi'
+   >  -H 'X-Session-ID: 2c1579eb-7078-423f-a825-732738908d9c'
+   >  -i localhost:3000/api/todo/overwrite
+```
+
 ### Stats
 ```sh
 curl -X GET -i localhost:3000/api/stats

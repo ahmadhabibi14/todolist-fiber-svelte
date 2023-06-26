@@ -5,23 +5,22 @@ import (
 
 	"ahmadhabibi7159_ToDoList/models"
 
+	"github.com/rs/xid"
+
 	"github.com/gofiber/fiber/v2"
 )
 
-type text_store struct {
-	Text string `json:"text"`
-}
-
 func Add(c *fiber.Ctx) error {
+	guid := xid.New()
 	session_id := c.Get("X-Session-ID")
-	textStore := new(text_store)
+	textStore := new(models.AddTextStore)
 
 	if err := c.BodyParser(textStore); err != nil {
-		c.Status(fiber.StatusBadRequest)
 		return fiber.NewError(fiber.StatusBadRequest, "Invalid Request")
 	}
 
 	var todoData = models.Todo{
+		Id:         guid.String(),
 		Text:       textStore.Text,
 		Created_At: time.Now().UTC(),
 		Updated_At: time.Now().UTC(),
