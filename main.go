@@ -5,14 +5,15 @@ import (
 	"ahmadhabibi7159_ToDoList/handlers/global"
 	"ahmadhabibi7159_ToDoList/handlers/todo"
 	"ahmadhabibi7159_ToDoList/middlewares"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 	// Uncomment this for production (Railway.app will automatically create PORT variable)
-	// port := os.Getenv("PORT")
-	port := "3000" // Comment this for production
+	port := os.Getenv("PORT")
+	// port := "3000" // Comment this for production
 	app := fiber.New()
 	app.Static("/", "./client")
 	api := app.Group("/api") // All Backend services in /api endpoints
