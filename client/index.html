@@ -1,0 +1,1822 @@
+<!DOCTYPE html><html lang="en"><head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>To Do List App</title>
+		<link rel="stylesheet" href="/css/main.tmp.css">
+		<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+</head>
+<body class="bg-zinc-100 text-zinc-900 font-sans">
+	<main id="app">
+<nav class="shadow-md z-50 fixed h-16 w-full top-0 inset-x-0 px-44 bg-zinc-100 text-lg border-b border-zinc-300 flex flex-row justify-between items-center"><div class="text-3xl font-bold italic"><span class="bg-gradient-to-br from-sky-500 to-fuchsia-500 text-transparent bg-clip-text">ToDoList</span>-App
+   </div>
+
+   <div class="flex flex-row items-center space-x-4 text-sm"><a href="/" class="hover:text-sky-600 font-medium flex flex-row space-x-1.5"><svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-sky-600"><path d="M17.5999 22.5601H6.39985C4.57984 22.5601 2.91985 21.1601 2.61985 19.3601L1.28984 11.4001C1.07984 10.1601 1.67985 8.57011 2.66985 7.78011L9.59986 2.23006C10.9399 1.15006 13.0498 1.16007 14.3998 2.24007L21.3299 7.78011C22.3099 8.57011 22.9099 10.1601 22.7099 11.4001L21.3799 19.3601C21.0799 21.1301 19.3899 22.5601 17.5999 22.5601ZM11.9899 2.94008C11.4599 2.94008 10.9298 3.10005 10.5398 3.41005L3.60985 8.9601C3.03985 9.4201 2.64986 10.4401 2.76986 11.1601L4.09986 19.1201C4.27986 20.1701 5.32984 21.0601 6.39985 21.0601H17.5999C18.6699 21.0601 19.7198 20.1701 19.8998 19.1101L21.2298 11.1501C21.3498 10.4301 20.9499 9.40009 20.3899 8.95009L13.4599 3.41005C13.0599 3.10005 12.5299 2.94008 11.9899 2.94008Z"></path><path d="M12 16.25C10.21 16.25 8.75 14.79 8.75 13C8.75 11.21 10.21 9.75 12 9.75C13.79 9.75 15.25 11.21 15.25 13C15.25 14.79 13.79 16.25 12 16.25ZM12 11.25C11.04 11.25 10.25 12.04 10.25 13C10.25 13.96 11.04 14.75 12 14.75C12.96 14.75 13.75 13.96 13.75 13C13.75 12.04 12.96 11.25 12 11.25Z"></path></svg>                             
+         <span>Home</span></a>
+      <a href="/stats" class="hover:text-sky-600 font-medium flex flex-row space-x-1.5"><svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-sky-600"><path d="M10.1103 18.1501H6.32031C5.91031 18.1501 5.57031 17.8101 5.57031 17.4001V12.2802C5.57031 11.2402 6.4203 10.3901 7.4603 10.3901H10.1103C10.5203 10.3901 10.8603 10.7301 10.8603 11.1401V17.3901C10.8603 17.8101 10.5203 18.1501 10.1103 18.1501ZM7.07031 16.6501H9.36029V11.9001H7.4603C7.2503 11.9001 7.07031 12.0701 7.07031 12.2901V16.6501Z"></path><path d="M13.8896 18.1501H10.0996C9.68961 18.1501 9.34961 17.8101 9.34961 17.4001V7.74011C9.34961 6.70011 10.1996 5.8501 11.2396 5.8501H12.7596C13.7996 5.8501 14.6496 6.70011 14.6496 7.74011V17.4001C14.6396 17.8101 14.3096 18.1501 13.8896 18.1501ZM10.8596 16.6501H13.1496V7.74011C13.1496 7.53011 12.9796 7.3501 12.7596 7.3501H11.2396C11.0296 7.3501 10.8496 7.52011 10.8496 7.74011V16.6501H10.8596Z"></path><path d="M17.6806 18.1501H13.8906C13.4806 18.1501 13.1406 17.8101 13.1406 17.4001V12.8501C13.1406 12.4401 13.4806 12.1001 13.8906 12.1001H16.5406C17.5806 12.1001 18.4306 12.9501 18.4306 13.9901V17.4001C18.4306 17.8101 18.1006 18.1501 17.6806 18.1501ZM14.6406 16.6501H16.9306V13.9901C16.9306 13.7801 16.7606 13.6001 16.5406 13.6001H14.6406V16.6501Z"></path><path d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H15C20.43 1.25 22.75 3.57 22.75 9V15C22.75 20.43 20.43 22.75 15 22.75ZM9 2.75C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V9C21.25 4.39 19.61 2.75 15 2.75H9Z"></path></svg>                                            
+         <span>Stats</span></a>
+      <a href="/login" class="text-zinc-50 font-medium flex flex-row items-center space-x-1.5 py-2 px-4 bg-gradient-to-br from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 rounded-xl"><svg viewBox="0 0 24 24" class="w-[16px] h-auto fill-current"><path d="M15.2405 22.27H15.1105C10.6705 22.27 8.5305 20.52 8.1605 16.6C8.1205 16.19 8.4205 15.82 8.8405 15.78C9.2505 15.74 9.6205 16.05 9.6605 16.46C9.9505 19.6 11.4305 20.77 15.1205 20.77H15.2505C19.3205 20.77 20.7605 19.33 20.7605 15.26V8.73998C20.7605 4.66998 19.3205 3.22998 15.2505 3.22998H15.1205C11.4105 3.22998 9.9305 4.41998 9.6605 7.61998C9.6105 8.02998 9.2705 8.33998 8.8405 8.29998C8.4205 8.26998 8.1205 7.89998 8.1505 7.48998C8.4905 3.50998 10.6405 1.72998 15.1105 1.72998H15.2405C20.1505 1.72998 22.2505 3.82998 22.2505 8.73998V15.26C22.2505 20.17 20.1505 22.27 15.2405 22.27Z"></path><path d="M14.88 12.75H2C1.59 12.75 1.25 12.41 1.25 12C1.25 11.59 1.59 11.25 2 11.25H14.88C15.29 11.25 15.63 11.59 15.63 12C15.63 12.41 15.3 12.75 14.88 12.75Z"></path><path d="M12.6498 16.1001C12.4598 16.1001 12.2698 16.0301 12.1198 15.8801C11.8298 15.5901 11.8298 15.1101 12.1198 14.8201L14.9398 12.0001L12.1198 9.18009C11.8298 8.89009 11.8298 8.41009 12.1198 8.12009C12.4098 7.83009 12.8898 7.83009 13.1798 8.12009L16.5298 11.4701C16.8198 11.7601 16.8198 12.2401 16.5298 12.5301L13.1798 15.8801C13.0298 16.0301 12.8398 16.1001 12.6498 16.1001Z"></path></svg>               
+            <span>Login</span></a></div></nav>
+
+<main class="min-h-[80vh] mx-44 mt-24">
+   
+   
+   
+
+      <div class="flex flex-col w-9/12 space-y-3 justify-center mx-auto">
+         <div class="w-full h-fit flex justify-center py-20 px-auto border-[2px] border-dashed border-zinc-400 bg-zinc-200/90 rounded-xl shadow-lg"><p class="text-lg font-bold italic text-zinc-600">No Content</p></div></div></main>
+
+<footer class="w-full py-3 text-center bg-zinc-100 border-t border-zinc-200 font-medium">ahmadhabibi7159 © 2023
+</footer></main>
+
+<script>document.getElementById('app').innerHTML=''</script><!---->
+
+
+<style></style>
+<script>(() => {
+  // node_modules/.pnpm/svelte@3.58.0/node_modules/svelte/internal/index.mjs
+  function noop() {
+  }
+  function run(fn) {
+    return fn();
+  }
+  function blank_object() {
+    return /* @__PURE__ */ Object.create(null);
+  }
+  function run_all(fns) {
+    fns.forEach(run);
+  }
+  function is_function(thing) {
+    return typeof thing === "function";
+  }
+  function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
+  }
+  function is_empty(obj) {
+    return Object.keys(obj).length === 0;
+  }
+  var is_hydrating = false;
+  function start_hydrating() {
+    is_hydrating = true;
+  }
+  function end_hydrating() {
+    is_hydrating = false;
+  }
+  function append(target, node) {
+    target.appendChild(node);
+  }
+  function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+  }
+  function detach(node) {
+    if (node.parentNode) {
+      node.parentNode.removeChild(node);
+    }
+  }
+  function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+      if (iterations[i])
+        iterations[i].d(detaching);
+    }
+  }
+  function element(name) {
+    return document.createElement(name);
+  }
+  function svg_element(name) {
+    return document.createElementNS("http://www.w3.org/2000/svg", name);
+  }
+  function text(data) {
+    return document.createTextNode(data);
+  }
+  function space() {
+    return text(" ");
+  }
+  function empty() {
+    return text("");
+  }
+  function comment(content) {
+    return document.createComment(content);
+  }
+  function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+  }
+  function prevent_default(fn) {
+    return function(event) {
+      event.preventDefault();
+      return fn.call(this, event);
+    };
+  }
+  function attr(node, attribute, value) {
+    if (value == null)
+      node.removeAttribute(attribute);
+    else if (node.getAttribute(attribute) !== value)
+      node.setAttribute(attribute, value);
+  }
+  function children(element2) {
+    return Array.from(element2.childNodes);
+  }
+  function set_data(text2, data) {
+    data = "" + data;
+    if (text2.data === data)
+      return;
+    text2.data = data;
+  }
+  function set_input_value(input, value) {
+    input.value = value == null ? "" : value;
+  }
+  function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
+    const e = document.createEvent("CustomEvent");
+    e.initCustomEvent(type, bubbles, cancelable, detail);
+    return e;
+  }
+  var current_component;
+  function set_current_component(component) {
+    current_component = component;
+  }
+  function get_current_component() {
+    if (!current_component)
+      throw new Error("Function called outside component initialization");
+    return current_component;
+  }
+  function onMount(fn) {
+    get_current_component().$.on_mount.push(fn);
+  }
+  function createEventDispatcher() {
+    const component = get_current_component();
+    return (type, detail, { cancelable = false } = {}) => {
+      const callbacks = component.$.callbacks[type];
+      if (callbacks) {
+        const event = custom_event(type, detail, { cancelable });
+        callbacks.slice().forEach((fn) => {
+          fn.call(component, event);
+        });
+        return !event.defaultPrevented;
+      }
+      return true;
+    };
+  }
+  var dirty_components = [];
+  var binding_callbacks = [];
+  var render_callbacks = [];
+  var flush_callbacks = [];
+  var resolved_promise = /* @__PURE__ */ Promise.resolve();
+  var update_scheduled = false;
+  function schedule_update() {
+    if (!update_scheduled) {
+      update_scheduled = true;
+      resolved_promise.then(flush);
+    }
+  }
+  function add_render_callback(fn) {
+    render_callbacks.push(fn);
+  }
+  var seen_callbacks = /* @__PURE__ */ new Set();
+  var flushidx = 0;
+  function flush() {
+    if (flushidx !== 0) {
+      return;
+    }
+    const saved_component = current_component;
+    do {
+      try {
+        while (flushidx < dirty_components.length) {
+          const component = dirty_components[flushidx];
+          flushidx++;
+          set_current_component(component);
+          update(component.$);
+        }
+      } catch (e) {
+        dirty_components.length = 0;
+        flushidx = 0;
+        throw e;
+      }
+      set_current_component(null);
+      dirty_components.length = 0;
+      flushidx = 0;
+      while (binding_callbacks.length)
+        binding_callbacks.pop()();
+      for (let i = 0; i < render_callbacks.length; i += 1) {
+        const callback = render_callbacks[i];
+        if (!seen_callbacks.has(callback)) {
+          seen_callbacks.add(callback);
+          callback();
+        }
+      }
+      render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+      flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+    seen_callbacks.clear();
+    set_current_component(saved_component);
+  }
+  function update($) {
+    if ($.fragment !== null) {
+      $.update();
+      run_all($.before_update);
+      const dirty = $.dirty;
+      $.dirty = [-1];
+      $.fragment && $.fragment.p($.ctx, dirty);
+      $.after_update.forEach(add_render_callback);
+    }
+  }
+  function flush_render_callbacks(fns) {
+    const filtered = [];
+    const targets = [];
+    render_callbacks.forEach((c) => fns.indexOf(c) === -1 ? filtered.push(c) : targets.push(c));
+    targets.forEach((c) => c());
+    render_callbacks = filtered;
+  }
+  var outroing = /* @__PURE__ */ new Set();
+  var outros;
+  function transition_in(block, local) {
+    if (block && block.i) {
+      outroing.delete(block);
+      block.i(local);
+    }
+  }
+  function transition_out(block, local, detach2, callback) {
+    if (block && block.o) {
+      if (outroing.has(block))
+        return;
+      outroing.add(block);
+      outros.c.push(() => {
+        outroing.delete(block);
+        if (callback) {
+          if (detach2)
+            block.d(1);
+          callback();
+        }
+      });
+      block.o(local);
+    } else if (callback) {
+      callback();
+    }
+  }
+  var globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
+  var _boolean_attributes = [
+    "allowfullscreen",
+    "allowpaymentrequest",
+    "async",
+    "autofocus",
+    "autoplay",
+    "checked",
+    "controls",
+    "default",
+    "defer",
+    "disabled",
+    "formnovalidate",
+    "hidden",
+    "inert",
+    "ismap",
+    "loop",
+    "multiple",
+    "muted",
+    "nomodule",
+    "novalidate",
+    "open",
+    "playsinline",
+    "readonly",
+    "required",
+    "reversed",
+    "selected"
+  ];
+  var boolean_attributes = /* @__PURE__ */ new Set([..._boolean_attributes]);
+  function create_component(block) {
+    block && block.c();
+  }
+  function mount_component(component, target, anchor, customElement) {
+    const { fragment, after_update } = component.$;
+    fragment && fragment.m(target, anchor);
+    if (!customElement) {
+      add_render_callback(() => {
+        const new_on_destroy = component.$.on_mount.map(run).filter(is_function);
+        if (component.$.on_destroy) {
+          component.$.on_destroy.push(...new_on_destroy);
+        } else {
+          run_all(new_on_destroy);
+        }
+        component.$.on_mount = [];
+      });
+    }
+    after_update.forEach(add_render_callback);
+  }
+  function destroy_component(component, detaching) {
+    const $ = component.$;
+    if ($.fragment !== null) {
+      flush_render_callbacks($.after_update);
+      run_all($.on_destroy);
+      $.fragment && $.fragment.d(detaching);
+      $.on_destroy = $.fragment = null;
+      $.ctx = [];
+    }
+  }
+  function make_dirty(component, i) {
+    if (component.$.dirty[0] === -1) {
+      dirty_components.push(component);
+      schedule_update();
+      component.$.dirty.fill(0);
+    }
+    component.$.dirty[i / 31 | 0] |= 1 << i % 31;
+  }
+  function init(component, options, instance5, create_fragment6, not_equal, props, append_styles, dirty = [-1]) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const $ = component.$ = {
+      fragment: null,
+      ctx: [],
+      // state
+      props,
+      update: noop,
+      not_equal,
+      bound: blank_object(),
+      // lifecycle
+      on_mount: [],
+      on_destroy: [],
+      on_disconnect: [],
+      before_update: [],
+      after_update: [],
+      context: new Map(options.context || (parent_component ? parent_component.$.context : [])),
+      // everything else
+      callbacks: blank_object(),
+      dirty,
+      skip_bound: false,
+      root: options.target || parent_component.$.root
+    };
+    append_styles && append_styles($.root);
+    let ready = false;
+    $.ctx = instance5 ? instance5(component, options.props || {}, (i, ret, ...rest) => {
+      const value = rest.length ? rest[0] : ret;
+      if ($.ctx && not_equal($.ctx[i], $.ctx[i] = value)) {
+        if (!$.skip_bound && $.bound[i])
+          $.bound[i](value);
+        if (ready)
+          make_dirty(component, i);
+      }
+      return ret;
+    }) : [];
+    $.update();
+    ready = true;
+    run_all($.before_update);
+    $.fragment = create_fragment6 ? create_fragment6($.ctx) : false;
+    if (options.target) {
+      if (options.hydrate) {
+        start_hydrating();
+        const nodes = children(options.target);
+        $.fragment && $.fragment.l(nodes);
+        nodes.forEach(detach);
+      } else {
+        $.fragment && $.fragment.c();
+      }
+      if (options.intro)
+        transition_in(component.$.fragment);
+      mount_component(component, options.target, options.anchor, options.customElement);
+      end_hydrating();
+      flush();
+    }
+    set_current_component(parent_component);
+  }
+  var SvelteElement;
+  if (typeof HTMLElement === "function") {
+    SvelteElement = class extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+      }
+      connectedCallback() {
+        const { on_mount } = this.$;
+        this.$.on_disconnect = on_mount.map(run).filter(is_function);
+        for (const key in this.$.slotted) {
+          this.appendChild(this.$.slotted[key]);
+        }
+      }
+      attributeChangedCallback(attr2, _oldValue, newValue) {
+        this[attr2] = newValue;
+      }
+      disconnectedCallback() {
+        run_all(this.$.on_disconnect);
+      }
+      $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+      }
+      $on(type, callback) {
+        if (!is_function(callback)) {
+          return noop;
+        }
+        const callbacks = this.$.callbacks[type] || (this.$.callbacks[type] = []);
+        callbacks.push(callback);
+        return () => {
+          const index = callbacks.indexOf(callback);
+          if (index !== -1)
+            callbacks.splice(index, 1);
+        };
+      }
+      $set($props) {
+        if (this.$set && !is_empty($props)) {
+          this.$.skip_bound = true;
+          this.$set($props);
+          this.$.skip_bound = false;
+        }
+      }
+    };
+  }
+  var SvelteComponent = class {
+    $destroy() {
+      destroy_component(this, 1);
+      this.$destroy = noop;
+    }
+    $on(type, callback) {
+      if (!is_function(callback)) {
+        return noop;
+      }
+      const callbacks = this.$.callbacks[type] || (this.$.callbacks[type] = []);
+      callbacks.push(callback);
+      return () => {
+        const index = callbacks.indexOf(callback);
+        if (index !== -1)
+          callbacks.splice(index, 1);
+      };
+    }
+    $set($props) {
+      if (this.$set && !is_empty($props)) {
+        this.$.skip_bound = true;
+        this.$set($props);
+        this.$.skip_bound = false;
+      }
+    }
+  };
+
+  // _components/navbar.svelte
+  function create_else_block(ctx) {
+    let a;
+    return {
+      c() {
+        a = element("a");
+        a.innerHTML = `<svg viewBox="0 0 24 24" class="w-[16px] h-auto fill-current"><path d="M15.2405 22.27H15.1105C10.6705 22.27 8.5305 20.52 8.1605 16.6C8.1205 16.19 8.4205 15.82 8.8405 15.78C9.2505 15.74 9.6205 16.05 9.6605 16.46C9.9505 19.6 11.4305 20.77 15.1205 20.77H15.2505C19.3205 20.77 20.7605 19.33 20.7605 15.26V8.73998C20.7605 4.66998 19.3205 3.22998 15.2505 3.22998H15.1205C11.4105 3.22998 9.9305 4.41998 9.6605 7.61998C9.6105 8.02998 9.2705 8.33998 8.8405 8.29998C8.4205 8.26998 8.1205 7.89998 8.1505 7.48998C8.4905 3.50998 10.6405 1.72998 15.1105 1.72998H15.2405C20.1505 1.72998 22.2505 3.82998 22.2505 8.73998V15.26C22.2505 20.17 20.1505 22.27 15.2405 22.27Z"></path><path d="M14.88 12.75H2C1.59 12.75 1.25 12.41 1.25 12C1.25 11.59 1.59 11.25 2 11.25H14.88C15.29 11.25 15.63 11.59 15.63 12C15.63 12.41 15.3 12.75 14.88 12.75Z"></path><path d="M12.6498 16.1001C12.4598 16.1001 12.2698 16.0301 12.1198 15.8801C11.8298 15.5901 11.8298 15.1101 12.1198 14.8201L14.9398 12.0001L12.1198 9.18009C11.8298 8.89009 11.8298 8.41009 12.1198 8.12009C12.4098 7.83009 12.8898 7.83009 13.1798 8.12009L16.5298 11.4701C16.8198 11.7601 16.8198 12.2401 16.5298 12.5301L13.1798 15.8801C13.0298 16.0301 12.8398 16.1001 12.6498 16.1001Z"></path></svg>                
+            <span>Login</span>`;
+        attr(a, "href", "/login");
+        attr(a, "class", "text-zinc-50 font-medium flex flex-row items-center space-x-1.5 py-2 px-4 bg-gradient-to-br from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 rounded-xl");
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(a);
+      }
+    };
+  }
+  function create_if_block(ctx) {
+    let a;
+    let t2;
+    let button;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        a = element("a");
+        a.innerHTML = `<svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-sky-600"><path d="M6.17916 22.7499C6.07916 22.7499 5.96916 22.7399 5.87916 22.7299L3.70916 22.4299C2.66916 22.2899 1.72916 21.3599 1.56916 20.2999L1.26916 18.1099C1.16916 17.4099 1.46916 16.4999 1.96916 15.9899L6.35916 11.5999C5.64916 8.75992 6.46916 5.75992 8.55916 3.68992C11.7992 0.459923 17.0692 0.449923 20.3192 3.68992C21.8892 5.25992 22.7492 7.34992 22.7492 9.56992C22.7492 11.7899 21.8892 13.8799 20.3192 15.4499C18.2192 17.5299 15.2292 18.3499 12.4092 17.6299L8.00916 22.0199C7.58916 22.4599 6.83916 22.7499 6.17916 22.7499ZM14.4292 2.75992C12.6792 2.75992 10.9392 3.41992 9.60916 4.74992C7.80916 6.53992 7.15916 9.15992 7.90916 11.5999C7.98916 11.8699 7.91916 12.1499 7.71916 12.3499L3.01916 17.0499C2.84916 17.2199 2.70916 17.6599 2.73916 17.8899L3.03916 20.0799C3.09916 20.4599 3.50916 20.8899 3.88916 20.9399L6.06916 21.2399C6.30916 21.2799 6.74916 21.1399 6.91916 20.9699L11.6392 16.2599C11.8392 16.0599 12.1292 15.9999 12.3892 16.0799C14.7992 16.8399 17.4292 16.1899 19.2292 14.3899C20.5092 13.1099 21.2192 11.3899 21.2192 9.56992C21.2192 7.73992 20.5092 6.02992 19.2292 4.74992C17.9292 3.42992 16.1792 2.75992 14.4292 2.75992Z"></path><path d="M9.19008 20.5399C9.00008 20.5399 8.81008 20.4699 8.66008 20.3199L6.36008 18.0199C6.07008 17.7299 6.07008 17.2499 6.36008 16.9599C6.65008 16.6699 7.13008 16.6699 7.42008 16.9599L9.72008 19.2599C10.0101 19.5499 10.0101 20.0299 9.72008 20.3199C9.57008 20.4699 9.38008 20.5399 9.19008 20.5399Z"></path><path d="M14.5 11.75C13.26 11.75 12.25 10.74 12.25 9.5C12.25 8.26 13.26 7.25 14.5 7.25C15.74 7.25 16.75 8.26 16.75 9.5C16.75 10.74 15.74 11.75 14.5 11.75ZM14.5 8.75C14.09 8.75 13.75 9.09 13.75 9.5C13.75 9.91 14.09 10.25 14.5 10.25C14.91 10.25 15.25 9.91 15.25 9.5C15.25 9.09 14.91 8.75 14.5 8.75Z"></path></svg>                                  
+            <span>Change Password</span>`;
+        t2 = space();
+        button = element("button");
+        button.innerHTML = `<svg viewBox="0 0 24 24" class="w-[16px] h-auto fill-current"><path d="M15.2405 22.27H15.1105C10.6705 22.27 8.5305 20.52 8.1605 16.6C8.1205 16.19 8.4205 15.82 8.8405 15.78C9.2405 15.74 9.6205 16.05 9.6605 16.46C9.9505 19.6 11.4305 20.77 15.1205 20.77H15.2505C19.3205 20.77 20.7605 19.33 20.7605 15.26V8.73998C20.7605 4.66998 19.3205 3.22998 15.2505 3.22998H15.1205C11.4105 3.22998 9.9305 4.41998 9.6605 7.61998C9.6105 8.02998 9.2605 8.33998 8.8405 8.29998C8.4205 8.26998 8.1205 7.89998 8.1505 7.48998C8.4905 3.50998 10.6405 1.72998 15.1105 1.72998H15.2405C20.1505 1.72998 22.2505 3.82998 22.2505 8.73998V15.26C22.2505 20.17 20.1505 22.27 15.2405 22.27Z"></path><path d="M14.9991 12.75H3.61914C3.20914 12.75 2.86914 12.41 2.86914 12C2.86914 11.59 3.20914 11.25 3.61914 11.25H14.9991C15.4091 11.25 15.7491 11.59 15.7491 12C15.7491 12.41 15.4091 12.75 14.9991 12.75Z"></path><path d="M5.84945 16.1001C5.65945 16.1001 5.46945 16.0301 5.31945 15.8801L1.96945 12.5301C1.67945 12.2401 1.67945 11.7601 1.96945 11.4701L5.31945 8.12009C5.60945 7.83009 6.08945 7.83009 6.37945 8.12009C6.66945 8.41009 6.66945 8.89009 6.37945 9.18009L3.55945 12.0001L6.37945 14.8201C6.66945 15.1101 6.66945 15.5901 6.37945 15.8801C6.23945 16.0301 6.03945 16.1001 5.84945 16.1001Z"></path></svg> 
+            <span>Logout</span>`;
+        attr(a, "href", "/change-password");
+        attr(a, "class", "hover:text-sky-600 font-medium flex flex-row space-x-1.5");
+        attr(button, "class", "text-zinc-50 font-medium flex flex-row items-center space-x-1.5 py-2 px-4 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 rounded-xl");
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+        insert(target, t2, anchor);
+        insert(target, button, anchor);
+        if (!mounted) {
+          dispose = listen(button, "click", prevent_default(
+            /*logout*/
+            ctx[1]
+          ));
+          mounted = true;
+        }
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(a);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(button);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_fragment(ctx) {
+    let c0;
+    let t0;
+    let nav;
+    let div0;
+    let t3;
+    let div1;
+    let a0;
+    let t6;
+    let a1;
+    let t9;
+    let t10;
+    let c1;
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*user*/
+        ctx2[0].loggedIn
+      )
+        return create_if_block;
+      return create_else_block;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block = current_block_type(ctx);
+    return {
+      c() {
+        c0 = comment(" NavBar ");
+        t0 = space();
+        nav = element("nav");
+        div0 = element("div");
+        div0.innerHTML = `<span class="bg-gradient-to-br from-sky-500 to-fuchsia-500 text-transparent bg-clip-text">ToDoList</span>-App`;
+        t3 = space();
+        div1 = element("div");
+        a0 = element("a");
+        a0.innerHTML = `<svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-sky-600"><path d="M17.5999 22.5601H6.39985C4.57984 22.5601 2.91985 21.1601 2.61985 19.3601L1.28984 11.4001C1.07984 10.1601 1.67985 8.57011 2.66985 7.78011L9.59986 2.23006C10.9399 1.15006 13.0498 1.16007 14.3998 2.24007L21.3299 7.78011C22.3099 8.57011 22.9099 10.1601 22.7099 11.4001L21.3799 19.3601C21.0799 21.1301 19.3899 22.5601 17.5999 22.5601ZM11.9899 2.94008C11.4599 2.94008 10.9298 3.10005 10.5398 3.41005L3.60985 8.9601C3.03985 9.4201 2.64986 10.4401 2.76986 11.1601L4.09986 19.1201C4.27986 20.1701 5.32984 21.0601 6.39985 21.0601H17.5999C18.6699 21.0601 19.7198 20.1701 19.8998 19.1101L21.2298 11.1501C21.3498 10.4301 20.9499 9.40009 20.3899 8.95009L13.4599 3.41005C13.0599 3.10005 12.5299 2.94008 11.9899 2.94008Z"></path><path d="M12 16.25C10.21 16.25 8.75 14.79 8.75 13C8.75 11.21 10.21 9.75 12 9.75C13.79 9.75 15.25 11.21 15.25 13C15.25 14.79 13.79 16.25 12 16.25ZM12 11.25C11.04 11.25 10.25 12.04 10.25 13C10.25 13.96 11.04 14.75 12 14.75C12.96 14.75 13.75 13.96 13.75 13C13.75 12.04 12.96 11.25 12 11.25Z"></path></svg>                              
+         <span>Home</span>`;
+        t6 = space();
+        a1 = element("a");
+        a1.innerHTML = `<svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-sky-600"><path d="M10.1103 18.1501H6.32031C5.91031 18.1501 5.57031 17.8101 5.57031 17.4001V12.2802C5.57031 11.2402 6.4203 10.3901 7.4603 10.3901H10.1103C10.5203 10.3901 10.8603 10.7301 10.8603 11.1401V17.3901C10.8603 17.8101 10.5203 18.1501 10.1103 18.1501ZM7.07031 16.6501H9.36029V11.9001H7.4603C7.2503 11.9001 7.07031 12.0701 7.07031 12.2901V16.6501Z"></path><path d="M13.8896 18.1501H10.0996C9.68961 18.1501 9.34961 17.8101 9.34961 17.4001V7.74011C9.34961 6.70011 10.1996 5.8501 11.2396 5.8501H12.7596C13.7996 5.8501 14.6496 6.70011 14.6496 7.74011V17.4001C14.6396 17.8101 14.3096 18.1501 13.8896 18.1501ZM10.8596 16.6501H13.1496V7.74011C13.1496 7.53011 12.9796 7.3501 12.7596 7.3501H11.2396C11.0296 7.3501 10.8496 7.52011 10.8496 7.74011V16.6501H10.8596Z"></path><path d="M17.6806 18.1501H13.8906C13.4806 18.1501 13.1406 17.8101 13.1406 17.4001V12.8501C13.1406 12.4401 13.4806 12.1001 13.8906 12.1001H16.5406C17.5806 12.1001 18.4306 12.9501 18.4306 13.9901V17.4001C18.4306 17.8101 18.1006 18.1501 17.6806 18.1501ZM14.6406 16.6501H16.9306V13.9901C16.9306 13.7801 16.7606 13.6001 16.5406 13.6001H14.6406V16.6501Z"></path><path d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H15C20.43 1.25 22.75 3.57 22.75 9V15C22.75 20.43 20.43 22.75 15 22.75ZM9 2.75C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V9C21.25 4.39 19.61 2.75 15 2.75H9Z"></path></svg>                                             
+         <span>Stats</span>`;
+        t9 = space();
+        if_block.c();
+        t10 = space();
+        c1 = comment(" Content Goes Here ");
+        attr(div0, "class", "text-3xl font-bold italic");
+        attr(a0, "href", "/");
+        attr(a0, "class", "hover:text-sky-600 font-medium flex flex-row space-x-1.5");
+        attr(a1, "href", "/stats");
+        attr(a1, "class", "hover:text-sky-600 font-medium flex flex-row space-x-1.5");
+        attr(div1, "class", "flex flex-row items-center space-x-4 text-sm");
+        attr(nav, "class", "shadow-md z-50 fixed h-16 w-full top-0 inset-x-0 px-44 bg-zinc-100 text-lg border-b border-zinc-300 flex flex-row justify-between items-center");
+      },
+      m(target, anchor) {
+        insert(target, c0, anchor);
+        insert(target, t0, anchor);
+        insert(target, nav, anchor);
+        append(nav, div0);
+        append(nav, t3);
+        append(nav, div1);
+        append(div1, a0);
+        append(div1, t6);
+        append(div1, a1);
+        append(div1, t9);
+        if_block.m(div1, null);
+        insert(target, t10, anchor);
+        insert(target, c1, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block.d(1);
+          if_block = current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(div1, null);
+          }
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(c0);
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(nav);
+        if_block.d();
+        if (detaching)
+          detach(t10);
+        if (detaching)
+          detach(c1);
+      }
+    };
+  }
+  function instance($self, $props, $invalidate) {
+    let user = {
+      session_cookie: "session_id",
+      session_id: "",
+      loggedIn: false
+    };
+    onMount(() => {
+      const cookies = document.cookie.split(";");
+      cookies.forEach((cookie) => {
+        const [name, value] = cookie.trim().split("=");
+        if (name === user.session_cookie) {
+          $invalidate(0, user.session_id = value, user);
+          $invalidate(0, user.loggedIn = true, user);
+        }
+      });
+    });
+    async function logout() {
+      try {
+        const resp = await fetch("/api/logout", {
+          method: "DELETE",
+          headers: { "X-Session-ID": user.session_id }
+        });
+        if (resp.ok) {
+          msg = await resp.json();
+          document.cookie = `${user.session_cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+          $invalidate(0, user.loggedIn = false, user);
+          localStorage.removeItem("username");
+          alert(msg.message);
+          location.reload();
+        } else {
+          document.cookie = `${user.session_cookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+          $invalidate(0, user.loggedIn = false, user);
+          localStorage.removeItem("username");
+          location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Logout failed");
+      }
+    }
+    return [user, logout];
+  }
+  var Navbar = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance, create_fragment, safe_not_equal, {});
+    }
+  };
+  var navbar_default = Navbar;
+
+  // _components/footer.svelte
+  function create_fragment2(ctx) {
+    let c;
+    let t0;
+    let footer;
+    return {
+      c() {
+        c = comment(" Footer ");
+        t0 = space();
+        footer = element("footer");
+        footer.textContent = "ahmadhabibi7159 \xA9 2023";
+        attr(footer, "class", "w-full py-3 text-center bg-zinc-100 border-t border-zinc-200 font-medium");
+      },
+      m(target, anchor) {
+        insert(target, c, anchor);
+        insert(target, t0, anchor);
+        insert(target, footer, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(c);
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(footer);
+      }
+    };
+  }
+  var Footer = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment2, safe_not_equal, {});
+    }
+  };
+  var footer_default = Footer;
+
+  // _components/add_item.svelte
+  function create_if_block2(ctx) {
+    let div1;
+    let form;
+    let textarea;
+    let t0;
+    let div0;
+    let button0;
+    let t2;
+    let button1;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        div1 = element("div");
+        form = element("form");
+        textarea = element("textarea");
+        t0 = space();
+        div0 = element("div");
+        button0 = element("button");
+        button0.textContent = "Cancel";
+        t2 = space();
+        button1 = element("button");
+        button1.textContent = "Submit";
+        attr(textarea, "rows", "6");
+        attr(textarea, "class", "border-zinc-400 border rounded-xl bg-transparent focus:border-blue-500 caret-blue-500 p-4 outline-0 w-full");
+        attr(textarea, "type", "text");
+        attr(textarea, "id", "text");
+        attr(textarea, "name", "text");
+        attr(textarea, "placeholder", "Tulis teks disini ..... \u{1F601}");
+        textarea.required = true;
+        attr(button0, "class", "basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600");
+        attr(button1, "type", "submit");
+        attr(button1, "class", "basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600");
+        attr(div0, "class", "flex flex-row space-x-3 w-full h-fit");
+        attr(form, "action", "/api/todo/add");
+        attr(form, "class", "mt-24 w-6/12 h-fit p-5 bg-white rounded-xl border-zinc-300 shadow-lg flex flex-col space-y-3");
+        attr(div1, "class", "w-full h-[96%] overflow-y-hidden top-0 left-0 absolute bg-zinc-800 bg-opacity-70 backdrop-blur-md flex justify-center");
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+        append(div1, form);
+        append(form, textarea);
+        set_input_value(
+          textarea,
+          /*data*/
+          ctx[1].text
+        );
+        append(form, t0);
+        append(form, div0);
+        append(div0, button0);
+        append(div0, t2);
+        append(div0, button1);
+        if (!mounted) {
+          dispose = [
+            listen(
+              textarea,
+              "input",
+              /*textarea_input_handler*/
+              ctx[5]
+            ),
+            listen(button0, "click", prevent_default(
+              /*closeModal*/
+              ctx[2]
+            )),
+            listen(form, "submit", prevent_default(
+              /*submitText*/
+              ctx[3]
+            ))
+          ];
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*data*/
+        2) {
+          set_input_value(
+            textarea,
+            /*data*/
+            ctx2[1].text
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div1);
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function create_fragment3(ctx) {
+    let if_block_anchor;
+    let if_block = (
+      /*isOpen*/
+      ctx[0] && create_if_block2(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*isOpen*/
+          ctx2[0]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block2(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance2($self, $props, $invalidate) {
+    let { isOpen = false } = $props;
+    let { session_id = "" } = $props;
+    const dispatch = createEventDispatcher();
+    let data = { text: "" };
+    function closeModal() {
+      dispatch("close");
+    }
+    const submitText = async (e) => {
+      const reqBody = JSON.stringify({ text: data.text });
+      const actionURL = e.target.action;
+      try {
+        const resp = await fetch(actionURL, {
+          method: "POST",
+          headers: {
+            "X-Session-ID": session_id,
+            "Content-Type": "application/json"
+          },
+          body: reqBody
+        });
+        if (resp.ok) {
+          const msg2 = await resp.json();
+          console.log(msg2.message);
+          dispatch("close");
+          location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Add item failed");
+      }
+      $invalidate(1, data.text = "", data);
+    };
+    function textarea_input_handler() {
+      data.text = this.value;
+      $invalidate(1, data);
+    }
+    $self.$set = ($props2) => {
+      if ("isOpen" in $props2)
+        $invalidate(0, isOpen = $props2.isOpen);
+      if ("session_id" in $props2)
+        $invalidate(4, session_id = $props2.session_id);
+    };
+    return [isOpen, data, closeModal, submitText, session_id, textarea_input_handler];
+  }
+  var Add_item = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance2, create_fragment3, safe_not_equal, { isOpen: 0, session_id: 4 });
+    }
+  };
+  var add_item_default = Add_item;
+
+  // _components/edit_item.svelte
+  function create_if_block3(ctx) {
+    let div1;
+    let form;
+    let textarea;
+    let t0;
+    let div0;
+    let button0;
+    let t2;
+    let button1;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        div1 = element("div");
+        form = element("form");
+        textarea = element("textarea");
+        t0 = space();
+        div0 = element("div");
+        button0 = element("button");
+        button0.textContent = "Cancel";
+        t2 = space();
+        button1 = element("button");
+        button1.textContent = "Submit";
+        attr(textarea, "rows", "6");
+        attr(textarea, "class", "border-zinc-400 border rounded-xl bg-transparent focus:border-blue-500 caret-blue-500 p-4 outline-0 w-full");
+        attr(textarea, "type", "text");
+        attr(textarea, "id", "text");
+        attr(textarea, "name", "text");
+        attr(textarea, "placeholder", "Edit teks disini ..... \u{1F601}");
+        textarea.required = true;
+        attr(button0, "class", "basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600");
+        attr(button1, "type", "submit");
+        attr(button1, "class", "basis-1/2 py-1.5 px-3 rounded-lg font-medium text-zinc-50 bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600");
+        attr(div0, "class", "flex flex-row space-x-3 w-full h-fit");
+        attr(form, "action", "/api/todo/overwrite");
+        attr(form, "class", "mt-24 w-6/12 h-fit p-5 bg-white rounded-xl border-zinc-300 shadow-lg flex flex-col space-y-3");
+        attr(div1, "class", "w-full h-[96%] overflow-y-hidden top-0 left-0 absolute bg-zinc-800 bg-opacity-70 backdrop-blur-md flex justify-center");
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+        append(div1, form);
+        append(form, textarea);
+        set_input_value(
+          textarea,
+          /*currentText*/
+          ctx[0]
+        );
+        append(form, t0);
+        append(form, div0);
+        append(div0, button0);
+        append(div0, t2);
+        append(div0, button1);
+        if (!mounted) {
+          dispose = [
+            listen(
+              textarea,
+              "input",
+              /*textarea_input_handler*/
+              ctx[6]
+            ),
+            listen(button0, "click", prevent_default(
+              /*closeModal*/
+              ctx[2]
+            )),
+            listen(form, "submit", prevent_default(
+              /*submitText*/
+              ctx[3]
+            ))
+          ];
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*currentText*/
+        1) {
+          set_input_value(
+            textarea,
+            /*currentText*/
+            ctx2[0]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div1);
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function create_fragment4(ctx) {
+    let if_block_anchor;
+    let if_block = (
+      /*isOpen*/
+      ctx[1] && create_if_block3(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*isOpen*/
+          ctx2[1]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block3(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance3($self, $props, $invalidate) {
+    let { isOpen = false } = $props;
+    let { currentText = "" } = $props;
+    let { todoId = "" } = $props;
+    let { session_id = "" } = $props;
+    const dispatch = createEventDispatcher();
+    let data = { text: "" };
+    function closeModal() {
+      dispatch("close");
+    }
+    const submitText = async (e) => {
+      data.text = currentText;
+      const reqBody = JSON.stringify({ id: todoId, text: data.text });
+      const actionURL = e.target.action;
+      try {
+        const resp = await fetch(actionURL, {
+          method: "PUT",
+          headers: {
+            "X-Session-ID": session_id,
+            "Content-Type": "application/json"
+          },
+          body: reqBody
+        });
+        if (resp.ok) {
+          const msg2 = await resp.json();
+          console.log(msg2.message);
+          dispatch("close");
+          location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Edit item failed");
+      }
+      data.text = "";
+    };
+    function textarea_input_handler() {
+      currentText = this.value;
+      $invalidate(0, currentText);
+    }
+    $self.$set = ($props2) => {
+      if ("isOpen" in $props2)
+        $invalidate(1, isOpen = $props2.isOpen);
+      if ("currentText" in $props2)
+        $invalidate(0, currentText = $props2.currentText);
+      if ("todoId" in $props2)
+        $invalidate(4, todoId = $props2.todoId);
+      if ("session_id" in $props2)
+        $invalidate(5, session_id = $props2.session_id);
+    };
+    return [
+      currentText,
+      isOpen,
+      closeModal,
+      submitText,
+      todoId,
+      session_id,
+      textarea_input_handler
+    ];
+  }
+  var Edit_item = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance3, create_fragment4, safe_not_equal, {
+        isOpen: 1,
+        currentText: 0,
+        todoId: 4,
+        session_id: 5
+      });
+    }
+  };
+  var edit_item_default = Edit_item;
+
+  // index.svelte
+  function get_each_context(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[10] = list[i];
+    return child_ctx;
+  }
+  function create_if_block_2(ctx) {
+    let button;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        button = element("button");
+        button.textContent = "New Todo +";
+        attr(button, "class", "py-2 mx-auto px-auto rounded-xl text-lg text-zinc-50 font-semibold bg-gradient-to-br from-sky-500 hover:from-sky-600 to-fuchsia-500 hover:to-fuchsia-600 w-full");
+      },
+      m(target, anchor) {
+        insert(target, button, anchor);
+        if (!mounted) {
+          dispose = listen(
+            button,
+            "click",
+            /*openModalAddItem*/
+            ctx[4]
+          );
+          mounted = true;
+        }
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(button);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_else_block2(ctx) {
+    let div;
+    return {
+      c() {
+        div = element("div");
+        div.innerHTML = `<p class="text-lg font-bold italic text-zinc-600">No Content</p>`;
+        attr(div, "class", "w-full h-fit flex justify-center py-20 px-auto border-[2px] border-dashed border-zinc-400 bg-zinc-200/90 rounded-xl shadow-lg");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div);
+      }
+    };
+  }
+  function create_if_block4(ctx) {
+    let each_1_anchor;
+    let each_value = (
+      /*Todos*/
+      ctx[2]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    }
+    return {
+      c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        each_1_anchor = empty();
+      },
+      m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(target, anchor);
+          }
+        }
+        insert(target, each_1_anchor, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*deleteTodos, Todos, openModalEditItem, user, formatTime, formatDate*/
+        332) {
+          each_value = /*Todos*/
+          ctx2[2];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+      },
+      d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(each_1_anchor);
+      }
+    };
+  }
+  function create_if_block_1(ctx) {
+    let div;
+    let button0;
+    let t2;
+    let button1;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        div = element("div");
+        button0 = element("button");
+        button0.innerHTML = `<svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current"><path d="M5.53999 19.5201C4.92999 19.5201 4.35999 19.31 3.94999 18.92C3.42999 18.43 3.17999 17.69 3.26999 16.89L3.63999 13.65C3.70999 13.04 4.07999 12.23 4.50999 11.79L12.72 3.10005C14.77 0.930049 16.91 0.870049 19.08 2.92005C21.25 4.97005 21.31 7.11005 19.26 9.28005L11.05 17.97C10.63 18.42 9.84999 18.84 9.23999 18.9401L6.01999 19.49C5.84999 19.5 5.69999 19.5201 5.53999 19.5201ZM15.93 2.91005C15.16 2.91005 14.49 3.39005 13.81 4.11005L5.59999 12.8101C5.39999 13.0201 5.16999 13.5201 5.12999 13.8101L4.75999 17.05C4.71999 17.38 4.79999 17.65 4.97999 17.82C5.15999 17.99 5.42999 18.05 5.75999 18L8.97999 17.4501C9.26999 17.4001 9.74999 17.14 9.94999 16.93L18.16 8.24005C19.4 6.92005 19.85 5.70005 18.04 4.00005C17.24 3.23005 16.55 2.91005 15.93 2.91005Z"></path><path d="M17.3404 10.9498C17.3204 10.9498 17.2904 10.9498 17.2704 10.9498C14.1504 10.6398 11.6404 8.26985 11.1604 5.16985C11.1004 4.75985 11.3804 4.37985 11.7904 4.30985C12.2004 4.24985 12.5804 4.52985 12.6504 4.93985C13.0304 7.35985 14.9904 9.21985 17.4304 9.45985C17.8404 9.49985 18.1404 9.86985 18.1004 10.2798C18.0504 10.6598 17.7204 10.9498 17.3404 10.9498Z"></path><path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z"></path></svg>                                                         
+                           <span>Edit</span>`;
+        t2 = space();
+        button1 = element("button");
+        button1.innerHTML = `<svg viewBox="0 0 24 24" class="w-[17px] h-auto fill-current"><path d="M20.9997 6.72998C20.9797 6.72998 20.9497 6.72998 20.9197 6.72998C15.6297 6.19998 10.3497 5.99998 5.11967 6.52998L3.07967 6.72998C2.65967 6.76998 2.28967 6.46998 2.24967 6.04998C2.20967 5.62998 2.50967 5.26998 2.91967 5.22998L4.95967 5.02998C10.2797 4.48998 15.6697 4.69998 21.0697 5.22998C21.4797 5.26998 21.7797 5.63998 21.7397 6.04998C21.7097 6.43998 21.3797 6.72998 20.9997 6.72998Z"></path><path d="M8.50074 5.72C8.46074 5.72 8.42074 5.72 8.37074 5.71C7.97074 5.64 7.69074 5.25 7.76074 4.85L7.98074 3.54C8.14074 2.58 8.36074 1.25 10.6907 1.25H13.3107C15.6507 1.25 15.8707 2.63 16.0207 3.55L16.2407 4.85C16.3107 5.26 16.0307 5.65 15.6307 5.71C15.2207 5.78 14.8307 5.5 14.7707 5.1L14.5507 3.8C14.4107 2.93 14.3807 2.76 13.3207 2.76H10.7007C9.64074 2.76 9.62074 2.9 9.47074 3.79L9.24074 5.09C9.18074 5.46 8.86074 5.72 8.50074 5.72Z"></path><path d="M15.2104 22.7501H8.79039C5.30039 22.7501 5.16039 20.8201 5.05039 19.2601L4.40039 9.19007C4.37039 8.78007 4.69039 8.42008 5.10039 8.39008C5.52039 8.37008 5.87039 8.68008 5.90039 9.09008L6.55039 19.1601C6.66039 20.6801 6.70039 21.2501 8.79039 21.2501H15.2104C17.3104 21.2501 17.3504 20.6801 17.4504 19.1601L18.1004 9.09008C18.1304 8.68008 18.4904 8.37008 18.9004 8.39008C19.3104 8.42008 19.6304 8.77007 19.6004 9.19007L18.9504 19.2601C18.8404 20.8201 18.7004 22.7501 15.2104 22.7501Z"></path><path d="M13.6601 17.25H10.3301C9.92008 17.25 9.58008 16.91 9.58008 16.5C9.58008 16.09 9.92008 15.75 10.3301 15.75H13.6601C14.0701 15.75 14.4101 16.09 14.4101 16.5C14.4101 16.91 14.0701 17.25 13.6601 17.25Z"></path><path d="M14.5 13.25H9.5C9.09 13.25 8.75 12.91 8.75 12.5C8.75 12.09 9.09 11.75 9.5 11.75H14.5C14.91 11.75 15.25 12.09 15.25 12.5C15.25 12.91 14.91 13.25 14.5 13.25Z"></path></svg>                            
+                           <span>Delete</span>`;
+        attr(button0, "class", "py-1 px-3 bg-gradient-to-br from-yellow-400 to-amber-600 hover:from-yellow-500 hover:to-amber-600 rounded-lg flex flex-row space-x-2 items-center");
+        attr(button1, "class", "py-1 px-3 bg-gradient-to-br from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 rounded-lg flex flex-row space-x-2 items-center");
+        attr(div, "class", "flex flex-row space-x-2 w-fit text-zinc-50 text-sm");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        append(div, button0);
+        append(div, t2);
+        append(div, button1);
+        if (!mounted) {
+          dispose = [
+            listen(button0, "click", function() {
+              if (is_function(
+                /*openModalEditItem*/
+                ctx[6](
+                  /*todo*/
+                  ctx[10].text,
+                  /*todo*/
+                  ctx[10].id
+                )
+              ))
+                ctx[6](
+                  /*todo*/
+                  ctx[10].text,
+                  /*todo*/
+                  ctx[10].id
+                ).apply(this, arguments);
+            }),
+            listen(button1, "click", function() {
+              if (is_function(
+                /*deleteTodos*/
+                ctx[8](
+                  /*todo*/
+                  ctx[10].id
+                )
+              ))
+                ctx[8](
+                  /*todo*/
+                  ctx[10].id
+                ).apply(this, arguments);
+            })
+          ];
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function create_each_block(ctx) {
+    let div5;
+    let div4;
+    let h3;
+    let t0_value = (
+      /*todo*/
+      ctx[10].text + ""
+    );
+    let t0;
+    let t1;
+    let c0;
+    let t2;
+    let div3;
+    let c1;
+    let t3;
+    let div0;
+    let svg0;
+    let path0;
+    let path1;
+    let t4;
+    let span;
+    let t5_value = (
+      /*todo*/
+      ctx[10].username + ""
+    );
+    let t5;
+    let t6;
+    let c2;
+    let t7;
+    let div1;
+    let svg1;
+    let path2;
+    let path3;
+    let path4;
+    let path5;
+    let path6;
+    let path7;
+    let path8;
+    let t8;
+    let p0;
+    let t9_value = formatDate(
+      /*todo*/
+      ctx[10].updated_at
+    ) + "";
+    let t9;
+    let t10;
+    let c3;
+    let t11;
+    let div2;
+    let svg2;
+    let path9;
+    let path10;
+    let t12;
+    let p1;
+    let t13_value = formatTime(
+      /*todo*/
+      ctx[10].updated_at
+    ) + "";
+    let t13;
+    let t14;
+    let t15;
+    let if_block = (
+      /*todo*/
+      ctx[10].user_id == /*user*/
+      ctx[3].user_id && create_if_block_1(ctx)
+    );
+    return {
+      c() {
+        div5 = element("div");
+        div4 = element("div");
+        h3 = element("h3");
+        t0 = text(t0_value);
+        t1 = space();
+        c0 = comment(" User and Updated time ");
+        t2 = space();
+        div3 = element("div");
+        c1 = comment(" User ");
+        t3 = space();
+        div0 = element("div");
+        svg0 = svg_element("svg");
+        path0 = svg_element("path");
+        path1 = svg_element("path");
+        t4 = space();
+        span = element("span");
+        t5 = text(t5_value);
+        t6 = space();
+        c2 = comment(" Date ");
+        t7 = space();
+        div1 = element("div");
+        svg1 = svg_element("svg");
+        path2 = svg_element("path");
+        path3 = svg_element("path");
+        path4 = svg_element("path");
+        path5 = svg_element("path");
+        path6 = svg_element("path");
+        path7 = svg_element("path");
+        path8 = svg_element("path");
+        t8 = space();
+        p0 = element("p");
+        t9 = text(t9_value);
+        t10 = space();
+        c3 = comment(" Time ");
+        t11 = space();
+        div2 = element("div");
+        svg2 = svg_element("svg");
+        path9 = svg_element("path");
+        path10 = svg_element("path");
+        t12 = space();
+        p1 = element("p");
+        t13 = text(t13_value);
+        t14 = space();
+        if (if_block)
+          if_block.c();
+        t15 = space();
+        attr(h3, "class", "text-2xl font-medium");
+        attr(path0, "d", "M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z");
+        attr(path1, "d", "M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z");
+        attr(svg0, "viewBox", "0 0 24 24");
+        attr(svg0, "class", "fill-current w-[14px] h-auto");
+        attr(div0, "class", "flex flex-row space-x-1.5");
+        attr(path2, "d", "M8 5.75C7.59 5.75 7.25 5.41 7.25 5V2C7.25 1.59 7.59 1.25 8 1.25C8.41 1.25 8.75 1.59 8.75 2V5C8.75 5.41 8.41 5.75 8 5.75Z");
+        attr(path3, "d", "M16 5.75C15.59 5.75 15.25 5.41 15.25 5V2C15.25 1.59 15.59 1.25 16 1.25C16.41 1.25 16.75 1.59 16.75 2V5C16.75 5.41 16.41 5.75 16 5.75Z");
+        attr(path4, "d", "M20.5 9.83984H3.5C3.09 9.83984 2.75 9.49984 2.75 9.08984C2.75 8.67984 3.09 8.33984 3.5 8.33984H20.5C20.91 8.33984 21.25 8.67984 21.25 9.08984C21.25 9.49984 20.91 9.83984 20.5 9.83984Z");
+        attr(path5, "d", "M16 22.75H8C4.35 22.75 2.25 20.65 2.25 17V8.5C2.25 4.85 4.35 2.75 8 2.75H16C19.65 2.75 21.75 4.85 21.75 8.5V17C21.75 20.65 19.65 22.75 16 22.75ZM8 4.25C5.14 4.25 3.75 5.64 3.75 8.5V17C3.75 19.86 5.14 21.25 8 21.25H16C18.86 21.25 20.25 19.86 20.25 17V8.5C20.25 5.64 18.86 4.25 16 4.25H8Z");
+        attr(path6, "d", "M8.5 14.5C8.37 14.5 8.24 14.47 8.12 14.42C8 14.37 7.89001 14.3 7.79001 14.21C7.70001 14.11 7.62999 14 7.57999 13.88C7.52999 13.76 7.5 13.63 7.5 13.5C7.5 13.24 7.61001 12.98 7.79001 12.79C7.89001 12.7 8 12.63 8.12 12.58C8.3 12.5 8.50001 12.48 8.70001 12.52C8.76001 12.53 8.82 12.55 8.88 12.58C8.94 12.6 9 12.63 9.06 12.67C9.11 12.71 9.15999 12.75 9.20999 12.79C9.24999 12.84 9.29999 12.89 9.32999 12.94C9.36999 13 9.40001 13.06 9.42001 13.12C9.45001 13.18 9.47001 13.24 9.48001 13.3C9.49001 13.37 9.5 13.43 9.5 13.5C9.5 13.76 9.38999 14.02 9.20999 14.21C9.01999 14.39 8.76 14.5 8.5 14.5Z");
+        attr(path7, "d", "M12 14.4999C11.74 14.4999 11.48 14.3899 11.29 14.2099C11.25 14.1599 11.21 14.1099 11.17 14.0599C11.13 13.9999 11.1 13.9399 11.08 13.8799C11.05 13.8199 11.03 13.7599 11.02 13.6999C11.01 13.6299 11 13.5699 11 13.4999C11 13.3699 11.03 13.2399 11.08 13.1199C11.13 12.9999 11.2 12.8899 11.29 12.7899C11.57 12.5099 12.02 12.4199 12.38 12.5799C12.51 12.6299 12.61 12.6999 12.71 12.7899C12.89 12.9799 13 13.2399 13 13.4999C13 13.5699 12.99 13.6299 12.98 13.6999C12.97 13.7599 12.95 13.8199 12.92 13.8799C12.9 13.9399 12.87 13.9999 12.83 14.0599C12.79 14.1099 12.75 14.1599 12.71 14.2099C12.61 14.2999 12.51 14.3699 12.38 14.4199C12.26 14.4699 12.13 14.4999 12 14.4999Z");
+        attr(path8, "d", "M8.5 17.9999C8.37 17.9999 8.24 17.9699 8.12 17.9199C8 17.8699 7.89001 17.7999 7.79001 17.7099C7.70001 17.6099 7.62999 17.5099 7.57999 17.3799C7.52999 17.2599 7.5 17.1299 7.5 16.9999C7.5 16.7399 7.61001 16.4799 7.79001 16.2899C7.89001 16.1999 8 16.1299 8.12 16.0799C8.49 15.9199 8.92999 16.0099 9.20999 16.2899C9.24999 16.3399 9.29999 16.3899 9.32999 16.4399C9.36999 16.4999 9.40001 16.5599 9.42001 16.6199C9.45001 16.6799 9.47001 16.7399 9.48001 16.8099C9.49001 16.8699 9.5 16.9399 9.5 16.9999C9.5 17.2599 9.38999 17.5199 9.20999 17.7099C9.01999 17.8899 8.76 17.9999 8.5 17.9999Z");
+        attr(svg1, "viewBox", "0 0 24 24");
+        attr(svg1, "class", "fill-current w-[14px] h-auto");
+        attr(div1, "class", "flex flex-row space-x-1.5");
+        attr(path9, "d", "M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z");
+        attr(path10, "d", "M15.7096 15.93C15.5796 15.93 15.4496 15.9 15.3296 15.82L12.2296 13.97C11.4596 13.51 10.8896 12.5 10.8896 11.61V7.51001C10.8896 7.10001 11.2296 6.76001 11.6396 6.76001C12.0496 6.76001 12.3896 7.10001 12.3896 7.51001V11.61C12.3896 11.97 12.6896 12.5 12.9996 12.68L16.0996 14.53C16.4596 14.74 16.5696 15.2 16.3596 15.56C16.2096 15.8 15.9596 15.93 15.7096 15.93Z");
+        attr(svg2, "viewBox", "0 0 24 24");
+        attr(svg2, "class", "fill-current w-[14px] h-auto");
+        attr(div2, "class", "flex flex-row space-x-1.5");
+        attr(div3, "class", "flex flex-row space-x-2.5 text-xs");
+        attr(div4, "class", "flex flex-col space-y-1.5 grow");
+        attr(div5, "class", "flex flex-row justify-between items-start space-x-3 rounded-xl shadow-md py-3 px-5 border border-zinc-300");
+      },
+      m(target, anchor) {
+        insert(target, div5, anchor);
+        append(div5, div4);
+        append(div4, h3);
+        append(h3, t0);
+        append(div4, t1);
+        append(div4, c0);
+        append(div4, t2);
+        append(div4, div3);
+        append(div3, c1);
+        append(div3, t3);
+        append(div3, div0);
+        append(div0, svg0);
+        append(svg0, path0);
+        append(svg0, path1);
+        append(div0, t4);
+        append(div0, span);
+        append(span, t5);
+        append(div3, t6);
+        append(div3, c2);
+        append(div3, t7);
+        append(div3, div1);
+        append(div1, svg1);
+        append(svg1, path2);
+        append(svg1, path3);
+        append(svg1, path4);
+        append(svg1, path5);
+        append(svg1, path6);
+        append(svg1, path7);
+        append(svg1, path8);
+        append(div1, t8);
+        append(div1, p0);
+        append(p0, t9);
+        append(div3, t10);
+        append(div3, c3);
+        append(div3, t11);
+        append(div3, div2);
+        append(div2, svg2);
+        append(svg2, path9);
+        append(svg2, path10);
+        append(div2, t12);
+        append(div2, p1);
+        append(p1, t13);
+        append(div5, t14);
+        if (if_block)
+          if_block.m(div5, null);
+        append(div5, t15);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*Todos*/
+        4 && t0_value !== (t0_value = /*todo*/
+        ctx2[10].text + ""))
+          set_data(t0, t0_value);
+        if (dirty & /*Todos*/
+        4 && t5_value !== (t5_value = /*todo*/
+        ctx2[10].username + ""))
+          set_data(t5, t5_value);
+        if (dirty & /*Todos*/
+        4 && t9_value !== (t9_value = formatDate(
+          /*todo*/
+          ctx2[10].updated_at
+        ) + ""))
+          set_data(t9, t9_value);
+        if (dirty & /*Todos*/
+        4 && t13_value !== (t13_value = formatTime(
+          /*todo*/
+          ctx2[10].updated_at
+        ) + ""))
+          set_data(t13, t13_value);
+        if (
+          /*todo*/
+          ctx2[10].user_id == /*user*/
+          ctx2[3].user_id
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block_1(ctx2);
+            if_block.c();
+            if_block.m(div5, t15);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div5);
+        if (if_block)
+          if_block.d();
+      }
+    };
+  }
+  function create_fragment5(ctx) {
+    let navbar;
+    let t0;
+    let main;
+    let c0;
+    let t1;
+    let additem;
+    let t2;
+    let c1;
+    let t3;
+    let edititem;
+    let t4;
+    let div;
+    let t5;
+    let t6;
+    let footer;
+    let current;
+    navbar = new navbar_default({});
+    additem = new add_item_default({
+      props: {
+        isOpen: (
+          /*isAddItemOpen*/
+          ctx[0]
+        ),
+        session_id: (
+          /*user*/
+          ctx[3].session_id
+        )
+      }
+    });
+    additem.$on(
+      "close",
+      /*closeModalAddItem*/
+      ctx[5]
+    );
+    edititem = new edit_item_default({
+      props: {
+        isOpen: (
+          /*isEditItemOpen*/
+          ctx[1]
+        ),
+        session_id: (
+          /*user*/
+          ctx[3].session_id
+        ),
+        currentText: (
+          /*user*/
+          ctx[3].current_text
+        ),
+        todoId: (
+          /*user*/
+          ctx[3].todo_id
+        )
+      }
+    });
+    edititem.$on(
+      "close",
+      /*closeModalEditItem*/
+      ctx[7]
+    );
+    let if_block0 = (
+      /*user*/
+      ctx[3].loggedIn && create_if_block_2(ctx)
+    );
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*Todos*/
+        ctx2[2].length > 0
+      )
+        return create_if_block4;
+      return create_else_block2;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block1 = current_block_type(ctx);
+    footer = new footer_default({});
+    return {
+      c() {
+        create_component(navbar.$.fragment);
+        t0 = space();
+        main = element("main");
+        c0 = comment(" Tambah Item Todo ");
+        t1 = space();
+        create_component(additem.$.fragment);
+        t2 = space();
+        c1 = comment(" Edit Item Todo ");
+        t3 = space();
+        create_component(edititem.$.fragment);
+        t4 = space();
+        div = element("div");
+        if (if_block0)
+          if_block0.c();
+        t5 = space();
+        if_block1.c();
+        t6 = space();
+        create_component(footer.$.fragment);
+        attr(div, "class", "flex flex-col w-9/12 space-y-3 justify-center mx-auto");
+        attr(main, "class", "min-h-[80vh] mx-44 mt-24");
+      },
+      m(target, anchor) {
+        mount_component(navbar, target, anchor);
+        insert(target, t0, anchor);
+        insert(target, main, anchor);
+        append(main, c0);
+        append(main, t1);
+        mount_component(additem, main, null);
+        append(main, t2);
+        append(main, c1);
+        append(main, t3);
+        mount_component(edititem, main, null);
+        append(main, t4);
+        append(main, div);
+        if (if_block0)
+          if_block0.m(div, null);
+        append(div, t5);
+        if_block1.m(div, null);
+        insert(target, t6, anchor);
+        mount_component(footer, target, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        const additem_changes = {};
+        if (dirty & /*isAddItemOpen*/
+        1)
+          additem_changes.isOpen = /*isAddItemOpen*/
+          ctx2[0];
+        if (dirty & /*user*/
+        8)
+          additem_changes.session_id = /*user*/
+          ctx2[3].session_id;
+        additem.$set(additem_changes);
+        const edititem_changes = {};
+        if (dirty & /*isEditItemOpen*/
+        2)
+          edititem_changes.isOpen = /*isEditItemOpen*/
+          ctx2[1];
+        if (dirty & /*user*/
+        8)
+          edititem_changes.session_id = /*user*/
+          ctx2[3].session_id;
+        if (dirty & /*user*/
+        8)
+          edititem_changes.currentText = /*user*/
+          ctx2[3].current_text;
+        if (dirty & /*user*/
+        8)
+          edititem_changes.todoId = /*user*/
+          ctx2[3].todo_id;
+        edititem.$set(edititem_changes);
+        if (
+          /*user*/
+          ctx2[3].loggedIn
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_2(ctx2);
+            if_block0.c();
+            if_block0.m(div, t5);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block1) {
+          if_block1.p(ctx2, dirty);
+        } else {
+          if_block1.d(1);
+          if_block1 = current_block_type(ctx2);
+          if (if_block1) {
+            if_block1.c();
+            if_block1.m(div, null);
+          }
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(navbar.$.fragment, local);
+        transition_in(additem.$.fragment, local);
+        transition_in(edititem.$.fragment, local);
+        transition_in(footer.$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(navbar.$.fragment, local);
+        transition_out(additem.$.fragment, local);
+        transition_out(edititem.$.fragment, local);
+        transition_out(footer.$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(navbar, detaching);
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(main);
+        destroy_component(additem);
+        destroy_component(edititem);
+        if (if_block0)
+          if_block0.d();
+        if_block1.d();
+        if (detaching)
+          detach(t6);
+        destroy_component(footer, detaching);
+      }
+    };
+  }
+  function formatTime(timestamp) {
+    const optionsTime = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    };
+    const date = new Date(timestamp);
+    return date.toLocaleString("en-US", optionsTime);
+  }
+  function formatDate(timestamp) {
+    const optionsDate = {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    };
+    const date = new Date(timestamp);
+    return date.toLocaleString("en-US", optionsDate);
+  }
+  function instance4($self, $props, $invalidate) {
+    let isAddItemOpen = false;
+    let isEditItemOpen = false;
+    function openModalAddItem() {
+      $invalidate(0, isAddItemOpen = true);
+    }
+    function closeModalAddItem() {
+      $invalidate(0, isAddItemOpen = false);
+    }
+    function openModalEditItem(curTxt, tdoId) {
+      $invalidate(3, user.current_text = curTxt, user);
+      $invalidate(3, user.todo_id = tdoId, user);
+      $invalidate(1, isEditItemOpen = true);
+    }
+    function closeModalEditItem() {
+      $invalidate(1, isEditItemOpen = false);
+    }
+    let Todos = [];
+    let user = {
+      user_id: 0,
+      loggedIn: false,
+      session_id: "",
+      current_text: "",
+      todo_id: ""
+    };
+    async function getTodos() {
+      const resp = await fetch("/api/todo/list?page=1&limit=10", { method: "GET" });
+      $invalidate(2, Todos = await resp.json());
+    }
+    async function deleteTodos(tdoId) {
+      $invalidate(3, user.todo_id = tdoId, user);
+      const reqBody = JSON.stringify({ id: user.todo_id });
+      try {
+        const resp = await fetch("/api/todo/delete", {
+          method: "DELETE",
+          headers: {
+            "X-Session-ID": user.session_id,
+            "Content-Type": "application/json"
+          },
+          body: reqBody
+        });
+        if (resp.ok) {
+          const msg2 = await resp.json();
+          console.log(msg2.message);
+          $invalidate(3, user.todo_id = "", user);
+          location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error delete item");
+      }
+    }
+    onMount(() => {
+      getTodos();
+      const cookies = document.cookie.split(";");
+      cookies.forEach((cookie) => {
+        const [name, value] = cookie.trim().split("=");
+        if (name === "session_id") {
+          $invalidate(3, user.session_id = value, user);
+          $invalidate(3, user.loggedIn = true, user);
+        }
+      });
+      $invalidate(3, user.user_id = localStorage.getItem("user_id"), user);
+    });
+    return [
+      isAddItemOpen,
+      isEditItemOpen,
+      Todos,
+      user,
+      openModalAddItem,
+      closeModalAddItem,
+      openModalEditItem,
+      closeModalEditItem,
+      deleteTodos
+    ];
+  }
+  var Index = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance4, create_fragment5, safe_not_equal, {});
+    }
+  };
+  var client_default = Index;
+
+  // index.svelte.ts
+  var app = new client_default({ target: document.getElementById("app") });
+})();
+</script>
+</body></html>
