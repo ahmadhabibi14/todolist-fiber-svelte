@@ -4,33 +4,33 @@ import (
 	"time"
 )
 
-type Todo struct {
-	Id         string    `json:"id"`
-	Text       string    `json:"text"`
-	Created_At time.Time `json:"created_at"`
-	Updated_At time.Time `json:"updated_at"`
-	Username   string    `json:"username"`
-	UserId     int       `json:"user_id"`
-}
+type (
+	Todo struct {
+		Id         string    `json:"id"`
+		Text       string    `json:"text"`
+		Created_At time.Time `json:"created_at"`
+		Updated_At time.Time `json:"updated_at"`
+		Username   string    `json:"username"`
+		UserId     int       `json:"user_id"`
+	}
+	AddTextStore struct {
+		Text string `json:"text"`
+	}
+	EditTextStore struct {
+		Id   string `json:"id"`
+		Text string `json:"text"`
+	}
+	DeleteTodoStore struct {
+		Id string `json:"id"`
+	}
+	ByUpdatedAt []Todo
+)
 
-type AddTextStore struct {
-	Text string `json:"text"`
-}
-
-type EditTextStore struct {
-	Id   string `json:"id"`
-	Text string `json:"text"`
-}
-
-type DeleteTodoStore struct {
-	Id string `json:"id"`
-}
-
-var Todos = []Todo{}
-var TotalTodoDeleted int = 0
-var TotalTodoCreated int = 0
-
-type ByUpdatedAt []Todo
+var (
+	Todos                = []Todo{}
+	TotalTodoDeleted int = 0
+	TotalTodoCreated int = 0
+)
 
 func (a ByUpdatedAt) Len() int           { return len(a) }
 func (a ByUpdatedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }

@@ -7,13 +7,15 @@ import (
 	"ahmadhabibi7159_ToDoList/middlewares"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/limiter"
 )
 
 func main() {
 	// Uncomment this for production (Railway.app will automatically create PORT variable)
 	// port := os.Getenv("PORT")
-	port := "3000" // Comment this for production
+	port := "4000" // Comment this for production
 	app := fiber.New()
+	app.Use(limiter.New(middlewares.Limiter))
 	app.Static("/", "./client")
 	api := app.Group("/api") // All Backend services in /api endpoints
 
