@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -26,7 +26,7 @@ func TestLogin(t *testing.T) {
 	assert.Equal(t, fiber.StatusOK, resp.StatusCode, "Login failed")
 	// Do something with results:
 	getCookie := resp.Header.Get("Set-Cookie") // Get cookie from header response
-	body, _ := ioutil.ReadAll(resp.Body)       // Get all response body
+	body, _ := io.ReadAll(resp.Body)           // Get all response body
 	if resp.StatusCode == fiber.StatusOK {
 		t.Logf("Response Header (Cookie) : %s\n", string(getCookie))
 		t.Logf("Response Body : %s\n", string(body))
